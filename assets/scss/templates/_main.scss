@@ -1,13 +1,13 @@
 /* card */
 .card {
-  border: 0;
+  border       : 0;
   border-radius: 0;
 
   &-header,
   &-footer,
   &-img,
   &-img-top {
-    border: 0;
+    border       : 0;
     border-radius: 0;
   }
 }
@@ -20,41 +20,41 @@
 
     @include tablet {
       margin-left: 0;
-      font-size: 30px;
+      font-size  : 30px;
     }
   }
 
   &-slider {
     @media screen and (min-width: 600px) {
       .slick-dots {
-        position: absolute;
-        height: 100%;
-        right: 0;
-        top: 0;
-        display: flex;
+        position      : absolute;
+        height        : 100%;
+        right         : 0;
+        top           : 0;
+        display       : flex;
         flex-direction: column;
 
         li {
-          flex: 1 1 auto;
-          position: relative;
+          flex           : 1 1 auto;
+          position       : relative;
           list-style-type: none;
 
           button {
-            position: absolute;
-            padding: 0;
-            border: 0;
+            position  : absolute;
+            padding   : 0;
+            border    : 0;
             background: $border-color;
-            color: transparent;
-            overflow: hidden;
-            width: 1px;
-            height: 100%;
+            color     : transparent;
+            overflow  : hidden;
+            width     : 1px;
+            height    : 100%;
           }
 
           &.slick-active {
             button {
               background: $primary-color;
-              width: 5px;
-              left: -2px;
+              width     : 5px;
+              left      : -2px;
             }
           }
         }
@@ -64,36 +64,36 @@
     @media screen and (max-width: 599px) {
       .slick-dots {
         position: absolute;
-        height: 5px;
-        width: 100%;
-        right: 0;
-        bottom: -40px;
-        display: flex;
-        padding: 0;
+        height  : 5px;
+        width   : 100%;
+        right   : 0;
+        bottom  : -40px;
+        display : flex;
+        padding : 0;
 
         li {
-          flex: 1 1 auto;
-          position: relative;
+          flex           : 1 1 auto;
+          position       : relative;
           list-style-type: none;
-          width: 100%;
-          height: 100%;
+          width          : 100%;
+          height         : 100%;
 
           button {
-            position: absolute;
-            padding: 0;
-            border: 0;
+            position  : absolute;
+            padding   : 0;
+            border    : 0;
             background: $border-color;
-            color: transparent;
-            overflow: hidden;
-            width: 100%;
-            height: 1px;
+            color     : transparent;
+            overflow  : hidden;
+            width     : 100%;
+            height    : 1px;
           }
 
           &.slick-active {
             button {
               background: $primary-color;
-              top: -2px;
-              height: 5px;
+              top       : -2px;
+              height    : 5px;
             }
           }
         }
@@ -104,19 +104,19 @@
 
 .post-meta {
   span {
-    color: #444;
+    color      : #444;
     font-weight: 500;
   }
 }
 
 /* recent post */
 .recent-post-thumb {
-  height: 100px;
-  width: 100px;
-  border-radius: 50%;
+  height             : 100px;
+  width              : 100px;
+  border-radius      : 50%;
   background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size    : cover;
+  background-repeat  : no-repeat;
 }
 
 .small-post-border {
@@ -124,9 +124,9 @@
     border-right: 1px solid $border-color;
 
     @include desktop {
-      border-right: 0;
-      border-bottom: 1px solid $border-color;
-      margin-bottom: 20px;
+      border-right  : 0;
+      border-bottom : 1px solid $border-color;
+      margin-bottom : 20px;
       padding-bottom: 20px;
     }
   }
@@ -134,14 +134,14 @@
 
 /* widget */
 .widget {
-  text-align: center;
+  text-align   : center;
   margin-bottom: 50px;
 
   &-title {
-    display: inline-block;
-    border-top: .5px solid $primary-color;
+    display      : inline-block;
+    border-top   : .5px solid $primary-color;
     border-bottom: .5px solid $primary-color;
-    padding: 10px 0;
+    padding      : 10px 0;
     margin-bottom: 20px;
   }
 
@@ -161,12 +161,12 @@
 .social-links {
   li {
     a {
-      height: 35px;
-      width: 35px;
-      background: $primary-color;
-      color: $white;
-      display: block;
-      line-height: 35px;
+      height     : 35px;
+      width      : 35px;
+      background : $primary-color;
+      color      : $white;
+      display    : block;
+      line-height: 39px;
 
       &:hover {
         color: $white;
@@ -182,17 +182,17 @@
   .page-item {
 
     .page-link {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      text-align: center;
-      color: $primary-color;
-      border-top: 0;
+      display      : inline-block;
+      width        : 40px;
+      height       : 40px;
+      text-align   : center;
+      color        : $primary-color;
+      border-top   : 0;
       border-bottom: 0;
 
       &:hover {
         background: $primary-color;
-        color: $white;
+        color     : $white;
       }
     }
 
@@ -206,8 +206,8 @@
     &.active {
       .page-link {
         background: $white;
-        color: $text-color;
-        border: 1px solid $primary-color;
+        color     : $text-color;
+        border    : 1px solid $primary-color;
       }
     }
   }
@@ -215,7 +215,7 @@
 
 .author-thumb-sm {
   max-height: 165px;
-  max-width: 165px;
+  max-width : 165px;
 }
 
 
@@ -239,40 +239,40 @@
   }
 
   ul {
-    padding-left: 0;
+    padding-left: 10px;
 
     li {
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 15px;
+      position       : relative;
+      padding-left   : 20px;
+      margin-bottom  : 15px;
       list-style-type: none;
 
       &::before {
-        position: absolute;
-        content: "\e71b";
-        font-family: $icon-font;
-        font-size: 14px;
-        left: 0;
-        top: 1px;
-        color: $primary-color;
-        transition: .3s ease;
+        position   : absolute;
+        content    : "*";
+        font-family: $primary-font;
+        font-size  : 14px;
+        left       : 0;
+        top        : 1px;
+        color      : $primary-color;
+        transition : .15s ease-in-out;
       }
     }
   }
 
   table {
-    text-align: left;
-    width: 100%;
-    max-width: 100%;
+    text-align   : left;
+    width        : 100%;
+    max-width    : 100%;
     margin-bottom: 1rem;
 
     border: 1px solid #dee2e6;
 
     th,
     td {
-      padding: .75rem;
+      padding       : .75rem;
       vertical-align: top;
-      border: 1px solid #dee2e6
+      border        : 1px solid #dee2e6
     }
 
     thead {
@@ -290,31 +290,36 @@
 
 
   blockquote {
-    padding: 20px;
-    background: $gray;
+    padding    : 20px;
+    background : $gray;
     border-left: 3px solid $primary-color;
+    font-family: $primary-font;
 
     p {
       margin-bottom: 0;
-      color: $text-color-dark;
-      font-style: italic !important;
+      color        : $text-color-dark;
+      font-family  : $primary-font;
+
     }
   }
 
 
   pre {
-    padding: 10px 20px;
-    background: $gray;
+    padding    : 10px 20px;
+    background : $gray;
+    font-family: $primary-font;
 
     code {
-      border: 0;
+      border    : 0;
       background: transparent;
-      padding: 0;
+      padding   : 0;
+
     }
   }
 
   a {
     color: $primary-color;
+
 
     &:hover {
       text-decoration: underline;
@@ -322,13 +327,13 @@
   }
 
   code {
-    padding: 3px 5px;
-    background: $gray;
-    border: 1px solid $border-color;
-    border-radius: 3px;
-    color: $text-color-dark;
+    padding      : 3px 3px;
+    background   : $gray;
+    border       : 1px solid $border-color;
+    border-radius: 5px;
+    color        : $text-color-dark;
+
   }
 
 }
 
-/* /markdown style */
