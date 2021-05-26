@@ -300,7 +300,6 @@
       margin-bottom: 0;
       color        : $text-color-dark;
       font-family  : $primary-font;
-
     }
   }
 
@@ -311,10 +310,10 @@
     font-family: $primary-font;
 
     code {
-      border    : 0;
-      background: transparent;
-      padding   : 0;
-
+      border     : 0;
+      background : transparent;
+      padding    : 0;
+      font-weight: lighter;
     }
   }
 
@@ -333,6 +332,7 @@
     border       : 1px solid $border-color;
     border-radius: 5px;
     color        : $text-color-dark;
+    font-weight  : lighter;
 
   }
 
