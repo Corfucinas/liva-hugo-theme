@@ -30,7 +30,7 @@
 
 
   {{ "<!-- google analitycs -->" | safeHTML }}
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-WHSXXMY8EX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
@@ -40,3 +40,4 @@
   </script>
 
 </head>
+
