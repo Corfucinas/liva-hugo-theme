@@ -1,8 +1,8 @@
 /*!------------------------------------------------------------------
 [MAIN STYLESHEET]
 
-PROJECT:	Project Name
-VERSION:	Version Number
+PROJECT:	Absolute Array
+VERSION:	v1.0.0
 -------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------
@@ -19,8 +19,8 @@ VERSION:	Version Number
 
 @import 'common';
 
-@import 'captcha.scss';
+@import 'captcha';
 
-@import 'templates/navigation.scss';
+@import 'templates/navigation';
 
-@import 'templates/main.scss';
+@import 'templates/main';
