@@ -18,8 +18,7 @@
     {{- if not (eq (len .Site.Taxonomies.categories) 0) }}
     <ul class="list-unstyled">
       {{- range $name, $items := .Site.Taxonomies.categories }}
-      <li><a
-          href="{{ `categories/` | relLangURL }}{{ $name | urlize | lower }}">{{ $name | title | humanize }}</a>
+      <li><a href="{{ `categories/` | relLangURL }}{{ $name | urlize | lower }}">{{ $name | title | humanize }}</a>
       </li>
       {{- end }}
     </ul>
@@ -51,6 +50,6 @@
   </div>
   <!-- advertisement -->
   <div class="widget">
-    <img src="{{`images/promotion.png` | absURL}}" alt="" class="img-fluid">
+    <!-- <img src="{{`images/promotion.png` | absURL}}" alt="" class="img-fluid"> -->
   </div>
 </div>
