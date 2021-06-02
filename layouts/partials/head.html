@@ -1,9 +1,68 @@
-<head>
+<head itemscope itemtype="{{ .Site.BaseURL }}">
   <meta charset="utf-8">
   <title>{{ .Site.Title }}</title>
+  {{ partial "links" . }}
+
+  {{ "<!-- Title Tags -->" | safeHTML }}
+  <title itemprop="name">{{ .Title }} | {{ .Site.Title }}</title>
+  <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}" />
+  <meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}" />
+  <meta itemprop="name" content="{{ .Title }} | {{ .Site.Title }}" />
+  <meta name="application-name" content="{{ .Title }} | {{ .Site.Title }}" />
+  <meta property="og:site_name" content="{{ .Site.Params.sitename }}" />
+
+
+  {{ "<!-- Description Tags -->" | safeHTML }}
+  <meta name="description" content="{{ .Params.description }}" />
+  <meta itemprop="description" content="{{ .Params.description }}" />
+  <meta property="og:description" content="{{ .Params.description }}" />
+  <meta name="twitter:description" content="{{ .Params.description }}" />
+
+
+  {{ "<!-- Link Tags -->" | safeHTML }}
+  <base href="{{ .Permalink }}" />
+  <link rel="canonical" href="{{ .Permalink }}" itemprop="url" />
+  <meta name="url" content="{{ .Permalink }}" />
+  <meta name="twitter:url" content="{{ .Permalink }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+
+
+  {{ "<!-- Language Tags -->" | safeHTML }}
+  <meta property="og:locale" content="{{ .Language.Lang }}" />
+  <meta name="language" content="{{ .Language.LanguageName }}" />
+  {{ range .AllTranslations }}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" title="{{ .Language.LanguageName }}" />
+  {{ end }}
+
+
+  {{ "<!-- Image Tags  -->" | safeHTML }}
+  {{ with .Params.image }}
+  <meta itemprop="image" content="{{ . | absURL }}" />
+  <meta property="og:image" content="{{ . | absURL }}" />
+  <meta name="twitter:image" content="{{ . | absURL }}" />
+  <meta name="twitter:image:src" content="{{ . | absURL }}" />
+  {{ else }}
+  <meta itemprop="image" content="{{ .Site.Params.ogimage | absURL }}" />
+  <meta property="og:image" content="{{ .Site.Params.ogimage | absURL }}" />
+  <meta name="twitter:image" content="{{ .Site.Params.ogimage | absURL }}" />
+  <meta name="twitter:image:src" content="{{ .Site.Params.ogimage | absURL }}" />
+  {{ end }}
+
+  {{ "<!-- Date Tags   -->" | safeHTML }}
+  <meta property="og:updated_time" content={{ .Lastmod.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+
+
+  {{ "<!-- Sitemap & RSS Feed Tags -->" | safeHTML }}
+  <link rel="sitemap" type="application/xml" title="Sitemap" href='{{ "sitemap.xml" | absURL }}' />
+
+  {{ with .OutputFormats.Get "RSS" }}
+  <link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+  <link href="{{ .Permalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
+  {{ end }}
+
 
   {{ "<!-- mobile responsive meta -->" | safeHTML }}
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, shrink-to-fit=no">
   <meta name="description"
     content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
   {{ with .Site.Params.author }}
@@ -38,12 +97,12 @@
 
     gtag('config', 'G-WHSXXMY8EX');
   </script>
-  
+
   {{ "<!-- adSense -->" | safeHTML }}
-  <script data-ad-client="ca-pub-9717324430850040" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script data-ad-client="ca-pub-9717324430850040" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
   {{ "<!-- recaptcha -->" | safeHTML }}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 </head>
-
