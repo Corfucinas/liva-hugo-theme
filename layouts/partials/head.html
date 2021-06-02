@@ -10,7 +10,6 @@
   <meta name="application-name" content="{{ .Title }}" />
   <meta property="og:site_name" content="{{ .Site.Params.sitename }}" />
 
-
   {{ "<!-- Description Tags -->" | safeHTML }}
   <meta name="description"
     content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}" />
@@ -21,7 +20,6 @@
   <meta name="twitter:description"
     content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}" />
 
-
   {{ "<!-- Link Tags -->" | safeHTML }}
   <base href="{{ .Permalink }}" />
   <link rel="canonical" href="{{ .Permalink }}" itemprop="url" />
@@ -29,14 +27,12 @@
   <meta name="twitter:url" content="{{ .Permalink }}" />
   <meta property="og:url" content="{{ .Permalink }}" />
 
-
   {{ "<!-- Language Tags -->" | safeHTML }}
   <meta property="og:locale" content="{{ .Language.Lang }}" />
   <meta name="language" content="{{ .Language.LanguageName }}" />
   {{ range .AllTranslations }}
   <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" title="{{ .Language.LanguageName }}" />
   {{ end }}
-
 
   {{ "<!-- Image Tags  -->" | safeHTML }}
   {{ with .Params.image }}
@@ -51,9 +47,8 @@
   <meta name="twitter:image:src" content="{{ .Site.Params.ogimage | absURL }}" />
   {{ end }}
 
-  {{ "<!-- Date Tags   -->" | safeHTML }}
+  {{ "<!-- Date Tags -->" | safeHTML }}
   <meta property="og:updated_time" content={{ .Lastmod.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
-
 
   {{ "<!-- Sitemap & RSS Feed Tags -->" | safeHTML }}
   <link rel="sitemap" type="application/xml" title="Sitemap" href='{{ "sitemap.xml" | absURL }}' />
@@ -63,9 +58,9 @@
   <link href="{{ .Permalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
   {{ end }}
 
-
   {{ "<!-- mobile responsive meta -->" | safeHTML }}
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   {{ with .Site.Params.author }}
   <meta name="author" content="{{ . }}">{{ end }}
 
@@ -79,6 +74,7 @@
   <link rel="stylesheet" href="{{ $styles.Permalink }}" media="screen">
 
   {{ "<!--Favicon-->" | safeHTML }}
+  <link rel="shortcut icon" href="images/favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
@@ -87,6 +83,23 @@
   <meta name="msapplication-TileColor" content="#00aba9">
   <meta name="msapplication-config" content="images/favicon/browserconfig.xml">
   <meta name="theme-color" content="#ffffff">
+
+  {{ "<!--Search Engine Crawler Tags-->" | safeHTML }}
+  <meta name="robots" content="index,follow" />
+  <meta name="googlebot" content="index,follow" />
+
+  {{ "<!--Misc-->" | safeHTML }}
+  <meta name="keywords"
+    content="coding, programming, knowledge, absolute array, absolute, array, python, learn, new skill" />
+  <meta name="imagemode" content="force" />
+  <meta name="coverage" content="Worldwide" />
+  <meta name="distribution" content="Global" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="apple-mobile-web-app-title" content="{{ .Site.Params.sitename }}" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-touch-fullscreen" content="yes" />
 
 
   {{ "<!-- google analitycs -->" | safeHTML }}
