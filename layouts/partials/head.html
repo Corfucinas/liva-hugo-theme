@@ -12,10 +12,14 @@
 
 
   {{ "<!-- Description Tags -->" | safeHTML }}
-  <meta name="description" content="{{ .Params.description }}" />
-  <meta itemprop="description" content="{{ .Params.description }}" />
-  <meta property="og:description" content="{{ .Params.description }}" />
-  <meta name="twitter:description" content="{{ .Params.description }}" />
+  <meta name="description"
+    content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}" />
+  <meta itemprop="description"
+    content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}" />
+  <meta property="og:description"
+    content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}" />
+  <meta name="twitter:description"
+    content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}" />
 
 
   {{ "<!-- Link Tags -->" | safeHTML }}
@@ -62,8 +66,6 @@
 
   {{ "<!-- mobile responsive meta -->" | safeHTML }}
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, shrink-to-fit=no">
-  <meta name="description"
-    content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
   {{ with .Site.Params.author }}
   <meta name="author" content="{{ . }}">{{ end }}
 
