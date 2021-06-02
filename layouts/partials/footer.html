@@ -93,7 +93,7 @@
 {{ end }}
 {{ "<!-- Main Script -->" | safeHTML }}
 {{ $script := resources.Get "js/script.js" | minify}}
-<script async src="{{ $script.Permalink }}"></script>
+<script src="{{ $script.Permalink }}"></script>
 
 
 <!-- cookie -->
