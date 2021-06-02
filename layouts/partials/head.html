@@ -66,12 +66,15 @@
 
   {{ "<!-- plugins -->" | safeHTML }}
   {{ range .Site.Params.plugins.css }}
-  <link rel="preload" href="{{ .URL | absURL }} " as="style" onload="this.rel='stylesheet'">
+  <link rel="preload" href="{{ .URL | absURL }}" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="{{ .URL | absURL }}">
+  </noscript>
   {{ end }}
 
   {{ "<!-- Main Stylesheet -->" | safeHTML }}
   {{ $styles := resources.Get "scss/style.scss" | toCSS | minify }}
-  <link rel="preload" href="{{ $styles.Permalink }}" media="screen" as="style" onload="this.rel='stylesheet'">
+  <link rel="stylesheet" href="{{ $styles.Permalink }}">
 
   {{ "<!--Favicon-->" | safeHTML }}
   <link rel="shortcut icon" href="{{ .Site.BaseURL | safeURL }}images/favicon/favicon.ico" />
@@ -101,7 +104,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-touch-fullscreen" content="yes" />
 
-
   {{ "<!-- google analitycs -->" | safeHTML }}
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
   <script>
@@ -117,7 +119,9 @@
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
   {{ "<!-- recaptcha -->" | safeHTML }}
+  {{ if eq .Section "contact" }}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  {{ end }}
 
   {{ "<!-- renders only in the article page -->" | safeHTML }}
   {{ if eq .Section "articles" }}
