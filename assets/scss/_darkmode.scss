@@ -2,3 +2,19 @@
 .darkmode-toggle {
     z-index: 500;
 }
+
+
+.darkmode--activated {
+
+    .col-md-5,
+    img,
+    .recent-post-thumb,
+    .img-fluid {
+        mix-blend-mode: difference;
+    }
+
+    .logo-image {
+        isolation: isolate;
+    }
+
+}
