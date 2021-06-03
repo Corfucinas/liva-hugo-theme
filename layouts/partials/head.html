@@ -118,7 +118,7 @@
   <script data-ad-client="ca-pub-9717324430850040" async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
-  {{ "<!-- recaptcha -->" | safeHTML }}
+  {{ "<!-- recaptcha renders only in contact page-->" | safeHTML }}
   {{ if eq .Section "contact" }}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   {{ end }}
