@@ -104,6 +104,22 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-touch-fullscreen" content="yes" />
 
+  {{ "<!-- Darkmode -->" | safeHTML }}
+  <script src="{{ .Site.BaseURL }}plugins/darkmode/darkmode.1.5.7.min.js"></script>
+  <script>
+    const options = {
+      time: '0.3s', // default: '0.3s'
+      saveInCookies: true, // default: true,
+      label: '🌓', // default: ''
+      autoMatchOsTheme: true // default: true
+    }
+
+    function addDarkmodeWidget() {
+      new Darkmode(options).showWidget();
+    }
+    window.addEventListener('load', addDarkmodeWidget);
+  </script>
+
   {{ "<!-- google analitycs -->" | safeHTML }}
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
   <script>
