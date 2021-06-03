@@ -127,7 +127,7 @@
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
-    gtag('config', 'G-WHSXXMY8EX');
+    gtag('config', '{{ .Site.Params.googleAnalytics }}');
   </script>
 
   {{ "<!-- adSense -->" | safeHTML }}
