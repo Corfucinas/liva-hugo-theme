@@ -28,7 +28,8 @@
         <div class="col-12 text-center mb-5">
           <picture class="logo-image">
             <a href="{{ .Site.BaseURL }}">
-              <img src="{{ .Site.Params.logo | absURL }}" alt="{{ .Site.Title }}">
+              <img data-src="{{ .Site.Params.logo | absURL }}" data-sizes="auto" alt="{{ .Site.Title }}"
+                class="lazyload">
             </a>
           </picture>
         </div>

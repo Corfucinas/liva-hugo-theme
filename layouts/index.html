@@ -1,5 +1,7 @@
 {{ define "main" }}
 
+
+
 <!-- featured post -->
 <section class="section-sm">
   <div class="container">
@@ -12,7 +14,8 @@
             <div class="col-md-5">
               {{ if .Params.Image }}
               <picture>
-                <img src="{{ .Params.Image | absURL }}" class="card-img" alt="{{ .Title | markdownify }}">
+                <img data-src="{{ .Params.Image | absURL }}" data-sizes="auto" class="card-img lazyload"
+                  alt="{{ .Title | markdownify }}">
               </picture>
               {{ end }}
             </div>
@@ -82,7 +85,8 @@
             <article class="card">
               {{ if .Params.Image }}
               <picture>
-                <img src="{{ .Params.Image | absURL }}" class="card-img-top" alt="{{ .Title | markdownify }}">
+                <img data-src="{{ .Params.Image | absURL }}" data-sizes="auto" class="card-img-top lazyload"
+                  alt="{{ .Title | markdownify }}">
               </picture>
               {{ end }}
               <div class="card-body px-0">

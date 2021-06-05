@@ -5,8 +5,8 @@
     <h4 class="widget-title">{{ .Title | markdownify }}</h4>
     {{ if .Params.Image }}
     <picture>
-      <img src="{{ .Params.Image | absURL }}" alt="author of the website"
-        class="img-fluid author-thumb-sm d-block mx-auto rounded-circle mb-4">
+      <img data-src="{{ .Params.Image | absURL }}" data-sizes="auto" alt="author of the website"
+        class="img-fluid author-thumb-sm d-block mx-auto rounded-circle mb-4 lazyload">
     </picture>
     {{ end }}
     <p>{{ .Summary }}</p>

@@ -3,7 +3,7 @@
 <div class="preloader">
   {{ if ne .Site.Params.preloader.preloader "" }}
   <picture>
-    <img src="{{ .Site.Params.preloader.preloader | absURL }} " alt="preloader">
+    <img data-src="{{ .Site.Params.preloader.preloader | absURL }}" data-sizes="auto" alt="preloader" class="lazyload">
   </picture>
   {{ end }}
 </div>

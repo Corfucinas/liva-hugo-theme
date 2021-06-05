@@ -2,6 +2,78 @@
   <meta charset="utf-8">
   <title>{{ .Site.Title }}</title>
 
+  {{ "<!-- lazy image -->" | safeHTML }}
+  <script async src="{{ .Site.BaseURL }}plugins/lazysize/lazysizes.min.js">
+  </script>
+
+  {{ "<!-- Main Stylesheet -->" | safeHTML }}
+  {{ $styles := resources.Get "scss/style.scss" | toCSS | minify }}
+  <link rel="stylesheet" href="{{ $styles.Permalink }}">
+
+  {{ "<!-- Darkmode -->" | safeHTML }}
+  <script defer src="{{ .Site.BaseURL }}plugins/darkmode/darkmode.1.5.7.min.js"></script>
+  <script>
+    const options = {
+      time: '0.5s', // default: '0.3s'
+      saveInCookies: true, // default: true,
+      label: '🌓', // default: ''
+      autoMatchOsTheme: true // default: true
+    }
+
+    function addDarkmodeWidget() {
+      new Darkmode(options).showWidget();
+    }
+    window.addEventListener('load', addDarkmodeWidget);
+  </script>
+
+  {{ "<!-- google analitycs -->" | safeHTML }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', '{{ .Site.Params.googleAnalytics }}');
+  </script>
+
+  {{ "<!-- adSense -->" | safeHTML }}
+  <script data-ad-client="ca-pub-9717324430850040" async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+  {{ "<!-- recaptcha renders only in contact page-->" | safeHTML }}
+  {{ if eq .Section "contact" }}
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  {{ end }}
+
+  <script defer type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": {{ .Title }},
+      "author": {
+        "@type": "Person",
+        "name": "{{ .Site.Params.github }}"
+      },
+      "datePublished": "{{ .Date.Format "2006-01-02" }}",
+      "description": {{ .Description }},
+      "wordCount": {{ .WordCount }},
+      "mainEntityOfPage": "True",
+      "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+      "image": {
+        "@type": "imageObject",
+        "url": "{{ .Params.Image | absURL }}"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ .Site.BaseURL | absURL }}",
+        "logo": {
+          "@type": "imageObject",
+          "url": "{{ .Site.BaseURL | absURL }}images/favicon/android-chrome-512x512.png"
+        }
+      }
+    }
+  </script>
+
   {{ "<!-- Title Tags -->" | safeHTML }}
   <title itemprop="name">{{ .Title }}</title>
   <meta property="og:title" content="{{ .Title }}" />
@@ -72,10 +144,6 @@
   </noscript>
   {{ end }}
 
-  {{ "<!-- Main Stylesheet -->" | safeHTML }}
-  {{ $styles := resources.Get "scss/style.scss" | toCSS | minify }}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}">
-
   {{ "<!--Favicon-->" | safeHTML }}
   <link rel="shortcut icon" href="{{ .Site.BaseURL | safeURL }}images/favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.BaseURL | safeURL }}images/favicon/apple-touch-icon.png">
@@ -103,41 +171,6 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-touch-fullscreen" content="yes" />
-
-  {{ "<!-- Darkmode -->" | safeHTML }}
-  <script defer src="{{ .Site.BaseURL }}plugins/darkmode/darkmode.1.5.7.min.js"></script>
-  <script>
-    const options = {
-      time: '0.5s', // default: '0.3s'
-      saveInCookies: true, // default: true,
-      label: '🌓', // default: ''
-      autoMatchOsTheme: true // default: true
-    }
-
-    function addDarkmodeWidget() {
-      new Darkmode(options).showWidget();
-    }
-    window.addEventListener('load', addDarkmodeWidget);
-  </script>
-
-  {{ "<!-- google analitycs -->" | safeHTML }}
-  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', '{{ .Site.Params.googleAnalytics }}');
-  </script>
-
-  {{ "<!-- adSense -->" | safeHTML }}
-  <script data-ad-client="ca-pub-9717324430850040" async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-  {{ "<!-- recaptcha renders only in contact page-->" | safeHTML }}
-  {{ if eq .Section "contact" }}
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-  {{ end }}
 
   {{ "<!-- renders only in the article page -->" | safeHTML }}
   {{ if eq .Section "articles" }}
@@ -169,36 +202,6 @@
   <meta name="news_keywords" content="{{ index . 0 }}" />
   <meta property="article:section" content="{{ index . 0 }}" />
   {{ end }}
-
-  <script defer type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    "headline": {{ .Title }},
-    "author": {
-      "@type": "Person",
-      "name": "{{ .Site.Params.github }}"
-    },
-    "datePublished": "{{ .Date.Format "2006-01-02" }}",
-    "description": {{ .Description }},
-    "wordCount": {{ .WordCount }},
-    "mainEntityOfPage": "True",
-    "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
-    "image": {
-      "@type": "imageObject",
-      "url": "{{ .Params.Image | absURL }}"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "{{ .Site.BaseURL | absURL }}",
-      "logo": {
-        "@type": "imageObject",
-        "url": "{{ .Site.BaseURL | absURL }}images/favicon/android-chrome-512x512.png"
-      }
-    }
-  }
-</script>
   {{ end }}
-
 
 </head>
