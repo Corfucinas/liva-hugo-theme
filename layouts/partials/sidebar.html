@@ -6,7 +6,7 @@
     {{ if .Params.Image }}
     <picture>
       <img data-src="{{ .Params.Image | absURL }}" data-sizes="auto" alt="author of the website"
-        class="img-fluid author-thumb-sm d-block mx-auto rounded-circle mb-4 lazyload">
+        class="img-fluid author-thumb-sm d-block mx-auto rounded-circle mb-4 lazyload" height="165px" width="350px">
     </picture>
     {{ end }}
     <p>{{ .Summary }}</p>
