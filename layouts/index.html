@@ -14,7 +14,6 @@
             <div class="col-md-5">
               {{ if .Params.Image }}
               <picture>
-                <!-- onload="this.rel='stylesheet'" -->
                 <img data-src="{{ .Params.Image | absURL }}" data-sizes="auto" class="card-img lazyload"
                   alt="{{ .Title | markdownify }}" height="383px" width="383px">
               </picture>

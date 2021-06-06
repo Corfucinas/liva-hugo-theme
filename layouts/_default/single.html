@@ -20,7 +20,7 @@
           {{ if .Params.image }}
           <picture>
             <img data-src="{{ .Params.Image | absURL }}" data-sizes="auto" class="img-fluid w-100 mb-4 lazyload"
-              alt="{{ .Title | markdownify }}">
+              alt="{{ .Title | markdownify }}" height="730px" width="730px">
           </picture>
           {{ end }}
           <div class="content mb-5">

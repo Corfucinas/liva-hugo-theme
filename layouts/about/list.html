@@ -7,7 +7,7 @@
         {{ if .Params.Image }}
         <picture>
           <img data-src="{{ .Params.Image | absURL }}" data-sizes="auto" alt="image"
-            class="img-fluid d-block mx-auto rounded-circle mb-4 lazyload">
+            class="img-fluid d-block mx-auto rounded-circle mb-4 lazyload" width="730px" height="734px">
         </picture>
         {{ end }}
         <h4 class="widget-title">{{ .Title | markdownify }}</h4>
