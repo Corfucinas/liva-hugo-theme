@@ -2,6 +2,19 @@
   <meta charset="utf-8">
   <title>{{ .Site.Title }}</title>
 
+  {{ "<!-- plugins -->" | safeHTML }}
+  {{ range .Site.Params.plugins.css }}
+  <link rel="preload" href="{{ .URL | absURL }}" as="style" onload="this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="{{ .URL | absURL }}">
+  </noscript>
+  {{ end }}
+
+  {{ "<!-- Main Stylesheet -->" | safeHTML }}
+  {{ with resources.Get "scss/style.scss" | toCSS | minify }}
+  <style> {{ .Content | safeCSS }} </style>
+  {{end}}
+
   {{ "<!-- lazy image -->" | safeHTML }}
   <script async src="{{ .Site.BaseURL }}plugins/lazysize/lazysizes.min.js">
   </script>
@@ -132,14 +145,6 @@
   {{ with .Site.Params.author }}
   <meta name="author" content="{{ . }}">{{ end }}
 
-  {{ "<!-- plugins -->" | safeHTML }}
-  {{ range .Site.Params.plugins.css }}
-  <link rel="preload" href="{{ .URL | absURL }}" as="style" onload="this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="{{ .URL | absURL }}">
-  </noscript>
-  {{ end }}
-
   {{ "<!--Favicon-->" | safeHTML }}
   <link rel="shortcut icon" href="{{ .Site.BaseURL | safeURL }}images/favicon/favicon.ico" />
   <link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.BaseURL | safeURL }}images/favicon/apple-touch-icon.png">
@@ -199,9 +204,5 @@
   <meta property="article:section" content="{{ index . 0 }}" />
   {{ end }}
   {{ end }}
-
-  {{ "<!-- Main Stylesheet -->" | safeHTML }}
-  {{ $styles := resources.Get "scss/style.scss" | toCSS | minify }}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}">
 
 </head>
