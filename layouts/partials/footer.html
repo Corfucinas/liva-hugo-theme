@@ -38,14 +38,16 @@
           <h6 class="mb-4">Contact Me</h6>
           <ul class="list-unstyled">
             {{ if .Site.Params.mobile }}
-            <li class="mb-3"><a class="text-dark" href="tel:{{ .Site.Params.mobile }}"><i
+            <li class="mb-3"><a class="text-dark" href="tel:{{ .Site.Params.mobile }}" target="_blank"
+                rel="noreferrer noopener" aria-label="Mobile phone"><i
                   class="ti-mobile mr-3 text-primary"></i>{{ .Site.Params.mobile }}</a></li>
             {{ end }}
             {{ if .Site.Params.location }}
             <li class="mb-3"><i class="ti-location-pin mr-3 text-primary"></i>{{ .Site.Params.location }}</li>
             {{ end }}
             {{ if .Site.Params.email }}
-            <li class="mb-3"><a class="text-dark" href="mailto:{{ .Site.Params.email }}"><i
+            <li class="mb-3"><a class="text-dark" href="mailto:{{ .Site.Params.email }}" target="_blank"
+                rel="noreferrer noopener" aria-label="Email"><i
                   class="ti-email mr-3 text-primary"></i>{{ .Site.Params.email }}</a>
               {{ end }}
             </li>
@@ -56,7 +58,8 @@
           <h6 class="mb-4">Social Contacts</h6>
           <ul class="list-unstyled">
             {{ range .Site.Params.social }}
-            <li class="mb-3"><a class="text-dark" href="{{ .link | safeURL }}">{{ .title }}</a></li>
+            <li class="mb-3"><a class="text-dark" href="{{ .link | safeURL }}" target="_blank" rel="noreferrer noopener"
+                aria-label="Social media">{{ .title }}</a></li>
             {{ end }}
           </ul>
         </div>

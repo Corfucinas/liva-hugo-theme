@@ -19,7 +19,8 @@
           <ul class="navbar-nav mr-auto">
             {{ range .Site.Params.social }}
             <li class="nav-item">
-              <a class="nav-link" href="{{ .link | safeURL }}"><i class="{{ .icon }}"></i></a>
+              <a class="nav-link" href="{{ .link | safeURL }}" target="_blank" rel="noreferrer noopener"
+                aria-label="Social media"><i class="{{ .icon }}"></i></a>
             </li>
             {{ end }}
           </ul>
