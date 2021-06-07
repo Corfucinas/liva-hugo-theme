@@ -1,8 +1,9 @@
 <head itemscope itemtype="{{ .Site.BaseURL }}">
   <meta charset="utf-8">
 
-  {{ "<!-- Content Secure Policy -->" | safeHTML }}
+  {{ "<!-- Security Policy -->" | safeHTML }}
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
 
   {{ "<!-- Title -->" | safeHTML }}
   <title>{{ .Site.Title }}</title>
