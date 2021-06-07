@@ -17,9 +17,9 @@
   {{ end }}
 
   {{ "<!-- Main Stylesheet -->" | safeHTML }}
-  {{ with resources.Get "scss/style.scss" | toCSS | minify }}
-  <style> {{ .Content | safeCSS }} </style>
-  {{end}}
+  {{ with resources.Get "scss/style.scss" | toCSS | minify | fingerprint "sha512" }}
+  <style> {{ .Content  | safeCSS }} integrity="{{ .Data.Integrity }}" </style>
+  {{end }}
 
   {{ "<!-- lazy image -->" | safeHTML }}
   <script async src="{{ .Site.BaseURL }}plugins/lazysize/lazysizes.min.js">
@@ -51,6 +51,10 @@
     gtag('config', '{{ .Site.Params.googleAnalytics }}');
   </script>
 
+  {{ "<!-- Alternate language -->" | safeHTML }}
+  <link rel="alternate" href="https://absolutearray.com/" hreflang="en">
+  <link rel="alternate" href="https://example.com/" hreflang="x-default" />
+
   {{ "<!-- adSense -->" | safeHTML }}
   <script data-ad-client="ca-pub-9717324430850040" async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -59,35 +63,6 @@
   {{ if eq .Section "contact" }}
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   {{ end }}
-
-  <script defer type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": {{ .Title }},
-      "author": {
-        "@type": "Person",
-        "name": "{{ .Site.Params.github }}"
-      },
-      "datePublished": "{{ .Date.Format "2006-01-02" }}",
-      "description": {{ .Description }},
-      "wordCount": {{ .WordCount }},
-      "mainEntityOfPage": "True",
-      "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
-      "image": {
-        "@type": "imageObject",
-        "url": "{{ .Params.Image | absURL }}"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "{{ .Site.BaseURL | absURL }}",
-        "logo": {
-          "@type": "imageObject",
-          "url": "{{ .Site.BaseURL | absURL }}images/favicon/android-chrome-512x512.png"
-        }
-      }
-    }
-  </script>
 
   {{ "<!-- Title Tags -->" | safeHTML }}
   <title itemprop="name">{{ .Title }}</title>
@@ -125,11 +100,14 @@
   {{ with .Params.image }}
   <meta itemprop="image" content="{{ . | absURL }}" />
   <meta property="og:image" content="{{ . | absURL }}" />
+  <meta name="twitter:card" content="summary">
   <meta name="twitter:image" content="{{ . | absURL }}" />
   <meta name="twitter:image:src" content="{{ . | absURL }}" />
   {{ else }}
   <meta itemprop="image" content="{{ .Site.Params.ogimage | absURL }}" />
   <meta property="og:image" content="{{ .Site.Params.ogimage | absURL }}" />
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:image" content="{{ .Site.Params.ogimage | absURL }}" />
   <meta name="twitter:image:src" content="{{ .Site.Params.ogimage | absURL }}" />
   {{ end }}
@@ -210,5 +188,10 @@
   <meta property="article:section" content="{{ index . 0 }}" />
   {{ end }}
   {{ end }}
+
+
+  {{ "<!-- seo_schema -->" | safeHTML }}
+
+  {{ partial "seo_schema" . }}
 
 </head>
