@@ -15,7 +15,7 @@
   {{ end }}
 
   {{ "<!-- Main Stylesheet -->" | safeHTML }}
-  {{ with resources.Get "scss/style.scss" | toCSS | minify | fingerprint "sha512" }}
+  {{ with resources.Get "scss/style.scss" | resources.ToCSS | resources.PostCSS (dict "use" "autoprefixer") | resources.Minify | resources.Fingerprint "sha512"  | resources.PostProcess }}
   <style> {{ .Content  | safeCSS }} </style>
   {{end}}
 
