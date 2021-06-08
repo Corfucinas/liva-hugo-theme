@@ -3,7 +3,7 @@
 
   {{ "<!-- Security Policy -->" | safeHTML }}
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <meta content="text/html; X-Content-Type-Options=nosniff" http-equiv="Content-Type">
+  <meta content="text/html; X-Content-Type-Options=nosniff">
 
   {{ "<!-- Title -->" | safeHTML }}
   <title itemprop="name">{{ .Site.Title }}</title>
@@ -124,7 +124,7 @@
 
   {{ "<!-- mobile responsive meta -->" | safeHTML }}
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, shrink-to-fit=no">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   {{ with .Site.Params.author }}
   <meta name="author" content="{{ . }}">{{ end }}
 
