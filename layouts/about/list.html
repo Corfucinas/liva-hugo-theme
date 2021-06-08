@@ -6,8 +6,8 @@
       <div class="col-lg-8 mx-auto text-center">
         {{ if .Params.Image }}
         <picture>
-          <img data-src="{{ .Params.Image | absURL }}" data-sizes="auto" alt="image"
-            class="img-fluid d-block mx-auto rounded-circle mb-4 lazyload" width="730" height="734">
+          <img data-src="{{ .Params.Image | absURL }}" src="{{ .Params.Image | absURL }}" data-sizes="auto" alt="image"
+            class="img-fluid d-block mx-auto rounded-circle mb-4 lazyload blur-up" width="730" height="734">
         </picture>
         {{ end }}
         <h4 class="widget-title">{{ .Title | markdownify }}</h4>
@@ -31,7 +31,8 @@
       <div class="col-lg-2 col-md-3 col-sm-4 col-6">
         <a href="{{ .image | absURL}}" class="venobox" data-gall="gallery">
           <picture>
-            <img class="img-fluid w-100 lazyload" data-sizes="auto" data-src="{{ .image | absURL}}" alt="image gallery">
+            <img class="img-fluid w-100 lazyload blur-up" data-sizes="auto" data-src="{{ .image | absURL}}"
+              src="{{ .image | absURL}}" alt="image gallery">
           </picture>
         </a>
       </div>
