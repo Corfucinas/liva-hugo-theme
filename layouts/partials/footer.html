@@ -102,7 +102,7 @@
 <script src="{{ .URL | absURL }}"></script>
 {{ end }}
 {{ "<!-- Main Script -->" | safeHTML }}
-{{ $script := resources.Get "js/script.js" | minify | fingerprint "sha512" }}
+{{ $script := resources.Get "js/script.js" | js.Build "script.js" |minify | fingerprint "sha512" }}
 <script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
 
 <section>

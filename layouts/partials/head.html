@@ -16,8 +16,8 @@
 
   {{ "<!-- Main Stylesheet -->" | safeHTML }}
   {{ with resources.Get "scss/style.scss" | toCSS | minify | fingerprint "sha512" }}
-  <style> {{ .Content  | safeCSS }} integrity="{{ .Data.Integrity }}" </style>
-  {{end }}
+  <style> {{ .Content  | safeCSS }} </style>
+  {{end}}
 
   {{ "<!-- lazy image -->" | safeHTML }}
   <script async src="{{ .Site.BaseURL }}plugins/lazysize/lazysizes.min.js">
