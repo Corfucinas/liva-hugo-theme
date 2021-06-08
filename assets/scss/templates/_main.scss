@@ -249,15 +249,14 @@
       list-style-type: none;
 
       &::before {
-        position    : absolute;
-        content     : "*";
-        font-family : $primary-font;
-        font-display: swap;
-        font-size   : 14px;
-        left        : 0;
-        top         : 1px;
-        color       : $primary-color;
-        transition  : .15s ease-in-out;
+        position   : absolute;
+        content    : "*";
+        font-family: $primary-font;
+        font-size  : 14px;
+        left       : 0;
+        top        : 1px;
+        color      : $primary-color;
+        transition : .15s ease-in-out;
       }
     }
   }

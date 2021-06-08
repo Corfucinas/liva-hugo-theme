@@ -15,7 +15,7 @@
               {{ if .Params.Image }}
               <picture>
                 <img data-src="{{ .Params.Image | absURL }}" data-sizes="auto" class="card-img lazyload"
-                  alt="{{ .Title | markdownify }}" height="383px" width="383px">
+                  alt="{{ .Title | markdownify }}" height="383" width="383">
               </picture>
               {{ end }}
             </div>
@@ -86,7 +86,7 @@
               {{ if .Params.Image }}
               <picture>
                 <img data-src="{{ .Params.Image | absURL }}" data-sizes="auto" class="card-img-top lazyload"
-                  alt="{{ .Title | markdownify }}" height="350px" width="350px">
+                  alt="{{ .Title | markdownify }}" height="350" width="350">
               </picture>
               {{ end }}
               <div class="card-body px-0">
