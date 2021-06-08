@@ -26,12 +26,12 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-12 text-center mb-5">
-          <picture class="logo-image">
-            <a href="{{ .Site.BaseURL }}">
+          <a href="{{ .Site.BaseURL }}">
+            <picture class="logo-image">
               <img data-src="{{ .Site.Params.logo | absURL }}" src="{{ .Site.Params.logo | absURL }}" data-sizes="auto"
                 alt="{{ .Site.Title }}" class="lazyload blur-up" height="48" width="48">
-            </a>
-          </picture>
+            </picture>
+          </a>
         </div>
         {{ if or  .Site.Params.mobile .Site.Params.location .Site.Params.email }}
         <div class="col-lg-3 col-sm-6 mb-5">
