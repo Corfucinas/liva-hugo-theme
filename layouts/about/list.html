@@ -5,10 +5,17 @@
     <div class="row">
       <div class="col-lg-8 mx-auto text-center">
         {{ if .Params.Image }}
-        <picture>
-          <img data-src="{{ .Params.Image | absURL }}" src="{{ .Params.Image | absURL }}" data-sizes="auto" alt="image"
-            class="img-fluid d-block mx-auto rounded-circle mb-4 lazyload blur-up" width="730" height="734">
-        </picture>
+        <figure>
+          <picture>
+            <source media="(min-width: 535px)" data-srcset="{{ .Params.Image | absURL }}.webp 1x,
+                        {{ .Params.Image | absURL }}@2x.webp 2x">
+            <source media="(max-width: 534px)" data-srcset="{{ .Params.Image | absURL }}-sm.webp 1x,
+                        {{ .Params.Image | absURL }}-sm@2x.webp 2x">
+            <img data-src="{{ .Params.Image | absURL }}.webp" data-srcset="{{ .Params.Image | absURL }}@2x.webp 2x"
+              alt="{{ .Title | markdownify }}" class="img-fluid d-block mx-auto rounded-circle mb-4 lazyload blur-up"
+              width="100%" height="100%" data-sizes="auto">
+          </picture>
+        </figure>
         {{ end }}
         <h4 class="widget-title">{{ .Title | markdownify }}</h4>
         <div class="content">
@@ -30,10 +37,17 @@
       {{ range .gallery }}
       <div class="col-lg-2 col-md-3 col-sm-4 col-6">
         <a href="{{ .image | absURL}}" class="venobox" data-gall="gallery">
-          <picture>
-            <img class="img-fluid w-100 lazyload blur-up" data-sizes="auto" data-src="{{ .image | absURL}}"
-              src="{{ .image | absURL}}" alt="image gallery">
-          </picture>
+          <figure>
+            <picture>
+              <source media="(min-width: 535px)" data-srcset="{{ .image | absURL }}.webp 1x,
+                          {{ .Params.Image | absURL }}@2x.webp 2x">
+              <source media="(max-width: 534px)" data-srcset="{{ .image | absURL }}-sm.webp 1x,
+                          {{ .Params.Image | absURL }}-sm@2x.webp 2x">
+              <img data-src="{{ .image | absURL }}.webp" data-srcset="{{ .image | absURL }}@2x.webp 2x"
+                alt="image galley" class="img-fluid w-100 lazyload blur-up" width="100%" height="100%"
+                data-sizes="auto">
+            </picture>
+          </figure>
         </a>
       </div>
       {{ end }}
