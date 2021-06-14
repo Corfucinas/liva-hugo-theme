@@ -14,51 +14,6 @@
   <link rel="dns-prefetch" href="https://adservice.google.com">
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-  {{ "<!-- All scripts -->" | safeHTML }}
-
-  {{ "<!-- lazy image -->" | safeHTML }}
-  <script async defer src="{{ .Site.BaseURL }}plugins/lazysize/lazysizes.min.js">
-  </script>
-
-  {{ "<!-- Darkmode -->" | safeHTML }}
-  <script async defer src="{{ .Site.BaseURL }}plugins/darkmode/darkmode.1.5.7.min.js"></script>
-  <script>
-    const options = {
-      time: '0.5s', // default: '0.3s'
-      saveInCookies: true, // default: true,
-      label: '🌓', // default: ''
-      autoMatchOsTheme: true // default: true
-    }
-
-    function addDarkmodeWidget() {
-      new Darkmode(options).showWidget();
-    }
-    window.addEventListener('load', addDarkmodeWidget);
-  </script>
-
-  {{ "<!-- google analytics -->" | safeHTML }}
-  <script async defer src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', '{{ .Site.Params.googleAnalytics }}');
-  </script>
-
-  {{ "<!-- adSense -->" | safeHTML }}
-  <script data-ad-client="ca-pub-9717324430850040" async defer
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-  {{ "<!-- recaptcha renders only in contact page-->" | safeHTML }}
-  {{ if eq .Section "contact" }}
-  <script async defer src="https://www.google.com/recaptcha/api.js"></script>
-  {{ end }}
-
-  {{ "<!-- seo_schema -->" | safeHTML }}
-
-  {{ partial "seo_schema" . }}
-
   {{ "<!-- plugins -->" | safeHTML }}
   {{ range .Site.Params.plugins.css }}
   <link rel="preload" href="{{ .URL | absURL }}" as="style" onload="this.rel='stylesheet'">
@@ -199,5 +154,50 @@
   <meta property="article:section" content="{{ index . 0 }}">
   {{ end }}
   {{ end }}
+
+  {{ "<!-- All scripts -->" | safeHTML }}
+
+  {{ "<!-- lazy image -->" | safeHTML }}
+  <script async defer src="{{ .Site.BaseURL }}plugins/lazysize/lazysizes.min.js">
+  </script>
+
+  {{ "<!-- Darkmode -->" | safeHTML }}
+  <script async defer src="{{ .Site.BaseURL }}plugins/darkmode/darkmode.1.5.7.min.js"></script>
+  <script>
+    const options = {
+      time: '0.6s', // default: '0.3s'
+      saveInCookies: true, // default: true,
+      label: '🌓', // default: ''
+      autoMatchOsTheme: true // default: true
+    }
+
+    function addDarkmodeWidget() {
+      new Darkmode(options).showWidget();
+    }
+    window.addEventListener('load', addDarkmodeWidget);
+  </script>
+
+  {{ "<!-- google analytics -->" | safeHTML }}
+  <script async defer src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', '{{ .Site.Params.googleAnalytics }}');
+  </script>
+
+  {{ "<!-- adSense -->" | safeHTML }}
+  <script data-ad-client="ca-pub-9717324430850040" async defer
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+  {{ "<!-- recaptcha renders only in contact page-->" | safeHTML }}
+  {{ if eq .Section "contact" }}
+  <script async defer src="https://www.google.com/recaptcha/api.js"></script>
+  {{ end }}
+
+  {{ "<!-- seo_schema -->" | safeHTML }}
+
+  {{ partial "seo_schema" . }}
 
 </head>
