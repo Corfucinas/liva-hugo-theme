@@ -105,8 +105,8 @@
 {{ $fusejs := resources.Get "plugins/search/fuse.min.js" }}
 {{ $markjs := resources.Get "plugins/search/mark.js" }}
 {{ $search := resources.Get "plugins/search/search.js" }}
-{{ $alljs := slice $fusejs $markjs $search | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
-<script src="{{ $alljs.RelPermalink }}" integrity="{{ $alljs.Data.Integrity }}"></script>
+{{ $searchjs := slice $fusejs $markjs $search | resources.Concat "/js/searchjs.js" | minify | fingerprint "sha512" }}
+<script src="{{ $searchjs.RelPermalink }}" integrity="{{ $searchjs.Data.Integrity }}"></script>
 
 
 <section>
