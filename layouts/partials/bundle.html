@@ -1,0 +1,21 @@
+{{ "<!-- css plugins -->" | safeHTML }}
+{{ $cssbootstrap := resources.Get "plugins/bootstrap/bootstrap.min.css" }}
+{{ $slick := resources.Get "plugins/slick/slick.css" }}
+{{ $themify := resources.Get "plugins/themify-icons/themify-icons.css" }}
+{{ $mainstyle := resources.Get "scss/style.scss" | resources.ToCSS | resources.PostCSS (dict "config" "postcss.config.js") }}
+
+{{ "<!-- main stylesheet -->" | safeHTML }}
+{{ $allcss := slice $cssbootstrap $slick $themify $mainstyle | resources.Concat "/css/vendor.css" | resources.Minify | resources.Fingerprint "sha512" | resources.PostProcess }}
+<link rel="stylesheet" href="{{ $allcss.RelPermalink }}" integrity="{{ $allcss.Data.Integrity }}">
+
+{{ "<!-- js plugins -->" | safeHTML }}
+{{ $jquery := resources.Get "plugins/jQuery/jquery.min.js" }}
+{{ $jsbootstrap := resources.Get "plugins/bootstrap/bootstrap.min.js" }}
+{{ $slickjs := resources.Get "plugins/slick/slick.min.js" }}
+{{ $lazyimage := resources.Get "plugins/lazysize/lazysizes.min.js" }}
+{{ $darkmode := resources.Get "plugins/darkmode/darkmode.1.5.7.min.js" }}
+{{ $cookies := resources.Get "plugins/cookies/js.cookie-2.2.1.min.js" }}
+
+{{ "<!-- bundled js -->" | safeHTML }}
+{{ $alljs := slice $jquery $jsbootstrap $slickjs $lazyimage $darkmode $cookies  | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
+<script src="{{ $alljs.RelPermalink }}" integrity="{{ $alljs.Data.Integrity }}"></script>

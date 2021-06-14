@@ -95,21 +95,23 @@
 </section>
 
 <script>
-  var indexURL = {{ "index.json" | absURL }}
+  const indexURL = {{ "index.json" | absURL }}
 </script>
 
-{{ "<!-- JS Plugins -->" | safeHTML }}
-{{ range .Site.Params.plugins.js }}
-<script src="{{ .URL | absURL }}"></script>
-{{ end }}
-{{ "<!-- Main Script -->" | safeHTML }}
+{{ "<!-- Main script -->" | safeHTML }}
 {{ $script := resources.Get "js/script.js" | js.Build "script.js" | minify | fingerprint "sha512" }}
 <script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+
+{{ $fusejs := resources.Get "plugins/search/fuse.min.js" }}
+{{ $markjs := resources.Get "plugins/search/mark.js" }}
+{{ $search := resources.Get "plugins/search/search.js" }}
+{{ $alljs := slice $fusejs $markjs $search | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
+<script src="{{ $alljs.RelPermalink }}" integrity="{{ $alljs.Data.Integrity }}"></script>
+
 
 <section>
   <!-- cookie -->
   {{ if site.Params.cookies.enable }}
-  <script src="{{ .Site.BaseURL }}plugins/cookies/js.cookie-2.2.1.min.js"></script>
   <div id="js-cookie-box" class="cookie-box cookie-box-hide">
     This site uses cookies. By continuing to use this website, you agree to their use. <span id="js-cookie-button"
       class="btn btn-sm btn-primary ml-2">I Accept</span>
@@ -130,4 +132,5 @@
 	}) (jQuery);
   </script>
   {{ end }}
+
 </section>

@@ -14,18 +14,11 @@
   <link rel="dns-prefetch" href="https://adservice.google.com">
   <link rel="dns-prefetch" href="https://www.google-analytics.com">
 
-  {{ "<!-- plugins -->" | safeHTML }}
-  {{ range .Site.Params.plugins.css }}
-  <link rel="preload" href="{{ .URL | absURL }}" as="style" onload="this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="{{ .URL | absURL }}">
-  </noscript>
-  {{ end }}
+  {{ "<!-- css & js plugins start-->" | safeHTML }}
 
-  {{ "<!-- Main Stylesheet -->" | safeHTML }}
-  {{ with resources.Get "scss/style.scss" | resources.ToCSS | resources.PostCSS (dict "config" "postcss.config.js") | resources.Minify | resources.Fingerprint "sha512" | resources.PostProcess }}
-  <style> {{ .Content  | safeCSS }} </style>
-  {{end}}
+  {{- partial "bundle.html"  -}}
+
+  {{ "<!-- css & js end -->" | safeHTML }}
 
   {{ "<!-- Alternate language -->" | safeHTML }}
   <link rel="alternate" href="{{ .Permalink | absURL }}" hreflang="en">
@@ -157,12 +150,7 @@
 
   {{ "<!-- All scripts -->" | safeHTML }}
 
-  {{ "<!-- lazy image -->" | safeHTML }}
-  <script async defer src="{{ .Site.BaseURL }}plugins/lazysize/lazysizes.min.js">
-  </script>
-
   {{ "<!-- Darkmode -->" | safeHTML }}
-  <script async defer src="{{ .Site.BaseURL }}plugins/darkmode/darkmode.1.5.7.min.js"></script>
   <script>
     const options = {
       time: '0.6s', // default: '0.3s'
