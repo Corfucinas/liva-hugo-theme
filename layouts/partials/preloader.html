@@ -3,8 +3,7 @@
 <div class="preloader">
   {{ if ne .Site.Params.preloader.preloader "" }}
   <picture>
-    <img data-src="{{ .Site.Params.preloader.preloader | absURL }}"
-      src="{{ .Site.Params.preloader.preloader | absURL }}" data-sizes="auto" alt="" class="lazyload blur-up"
+    <img data-src="{{ .Site.Params.preloader.preloader | absURL }}" data-sizes="auto" alt="" class="lazyload blur-up"
       aria-label="preloader" width="100%" height="100%">
   </picture>
   {{ end }}

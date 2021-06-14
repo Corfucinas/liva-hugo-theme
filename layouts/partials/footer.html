@@ -104,7 +104,7 @@
 {{ end }}
 {{ "<!-- Main Script -->" | safeHTML }}
 {{ $script := resources.Get "js/script.js" | js.Build "script.js" | minify | fingerprint "sha512" }}
-<script async defer src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+<script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
 
 <section>
   <!-- cookie -->
