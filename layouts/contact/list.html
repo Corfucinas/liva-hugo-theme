@@ -38,7 +38,7 @@
         <h2 class="mb-4">Write To Me</h2>
         <form action="https://formspree.io/f/mjvjwolp" method="POST" class="row">
           {{ $script := resources.Get "js/captcha.js" | js.Build "captcha.js" | minify | fingerprint "sha512"}}
-          <script sync src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+          <script sync src="{{ $script.Permalink }}"></script>
           <div class="col-lg-6">
             <input type="text" class="form-control mb-4" id="name" name="name" placeholder="Your name" required="true">
           </div>

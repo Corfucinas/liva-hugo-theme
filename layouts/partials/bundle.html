@@ -6,7 +6,7 @@
 
 {{ "<!-- main stylesheet -->" | safeHTML }}
 {{ $allcss := slice $cssbootstrap $slick $themify $mainstyle | resources.Concat "/css/vendor.css" | resources.Minify | resources.Fingerprint "sha512" | resources.PostProcess }}
-<link rel="stylesheet" href="{{ $allcss.RelPermalink }}" integrity="{{ $allcss.Data.Integrity }}">
+<link rel="stylesheet" href="{{ $allcss.RelPermalink }}">
 
 {{ "<!-- js plugins -->" | safeHTML }}
 {{ $jquery := resources.Get "plugins/jQuery/jquery.min.js" }}
@@ -18,4 +18,4 @@
 
 {{ "<!-- bundled js -->" | safeHTML }}
 {{ $alljs := slice $jquery $jsbootstrap $slickjs $lazyimage $darkmode $cookies  | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
-<script src="{{ $alljs.RelPermalink }}" integrity="{{ $alljs.Data.Integrity }}"></script>
+<script src="{{ $alljs.RelPermalink }}"></script>

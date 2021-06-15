@@ -99,14 +99,14 @@
 </script>
 
 {{ "<!-- Main script -->" | safeHTML }}
-{{ $script := resources.Get "js/script.js" | js.Build "script.js" | minify | fingerprint "sha512" }}
-<script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{ $script := resources.Get "js/script.js" | minify | fingerprint "sha512" }}
+<script src="{{ $script.Permalink }}"></script>
 
 {{ $fusejs := resources.Get "plugins/search/fuse.min.js" }}
 {{ $markjs := resources.Get "plugins/search/mark.js" }}
 {{ $search := resources.Get "plugins/search/search.js" }}
 {{ $searchjs := slice $fusejs $markjs $search | resources.Concat "/js/searchjs.js" | minify | fingerprint "sha512" }}
-<script src="{{ $searchjs.RelPermalink }}" integrity="{{ $searchjs.Data.Integrity }}"></script>
+<script src="{{ $searchjs.RelPermalink }}"></script>
 
 
 <section>
