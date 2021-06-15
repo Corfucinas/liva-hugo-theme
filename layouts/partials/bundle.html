@@ -2,10 +2,10 @@
 {{ $cssbootstrap := resources.Get "plugins/bootstrap/bootstrap.min.css" }}
 {{ $slick := resources.Get "plugins/slick/slick.css" }}
 {{ $themify := resources.Get "plugins/themify-icons/themify-icons.css" }}
-{{ $mainstyle := resources.Get "scss/style.scss" | resources.ToCSS | resources.PostCSS (dict "config" "postcss.config.js") }}
+{{ $mainstyle := resources.Get "scss/style.scss" | resources.ToCSS  }}
 
 {{ "<!-- main stylesheet -->" | safeHTML }}
-{{ $allcss := slice $cssbootstrap $slick $themify $mainstyle | resources.Concat "/css/vendor.css" | resources.Minify | resources.Fingerprint "sha512" | resources.PostProcess }}
+{{ $allcss := slice $cssbootstrap $slick $themify $mainstyle | resources.Concat "/css/vendor.css" | resources.PostCSS (dict "config" "postcss.config.js") | resources.Minify | resources.Fingerprint "sha512" | resources.PostProcess }}
 <link rel="stylesheet" href="{{ $allcss.RelPermalink }}">
 
 {{ "<!-- js plugins -->" | safeHTML }}
