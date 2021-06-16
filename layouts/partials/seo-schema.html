@@ -16,19 +16,19 @@
         "description" : "{{if .IsPage}}{{ .Page.Description }}{{ else }}{{ if .Site.Params.Description }}{{ .Site.Params.Description }}{{ end }}{{ end }}",
         "inLanguage" : "{{ .Lang }}",
         "author" :
-        [
-            @type: "Person",
+        {
+            "@type": "Person",
             "name":"{{ .Site.Params.Author }}"
-        ],
+        },
         "creator" : "{{ .Site.Params.Author }}",
         "publisher":
-        [
-        @type: "Organization",
+        {
+        "@type": "Organization",
         "name": "Absolute Array",
         "logo": {
             "@type": "ImageObject",
             "url": "{{ .Site.Params.Baseurl | absURL }}images/favicon/website-logo.png"
-        }],
+        }},
         "copyrightHolder" : "{{ .Site.Params.Author }}",
         "copyrightYear" : "{{ .Date.Format "2006" }}",
         "datePublished": "{{ .Date | safeHTML }}",
