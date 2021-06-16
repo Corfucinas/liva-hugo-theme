@@ -1,0 +1,40 @@
+$color__background-light: #f8f8f8;
+$color__light-gray: #eaeaea;
+$color__text-main: #404040;
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid $color__light-gray;
+    max-width: 100%;
+}
+
+.tabs button {
+    min-width: 100px;
+    color: lighten($color__text-main, 30%);
+    background-color: $color__background-light;
+    border: 1px solid $color__light-gray;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    outline: none;
+    cursor: pointer;
+    margin-bottom: -1px;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+.tabs button:hover {
+    color: inherit;
+    background-color: darken($color__background-light, 5%);
+}
+.tabs button.active {
+    color: inherit;
+    background-color: white;
+    border-bottom: white;
+}
+
+.tabcontent {
+    display: none;
+}
+.tabcontent.active {
+    display: block;
+}
