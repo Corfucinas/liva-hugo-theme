@@ -8,6 +8,22 @@
         {{- block "main" . }}{{- end }}
         {{- partial "footer.html" . -}}
         {{- partial "serviceworker.html"  -}}
+        {{ "<!-- google/amp analytics -->" | safeHTML }}
+        <amp-analytics type="gtag" data-credentials="include">
+            <script type="application/json">
+            {
+              "vars" : {
+                "gtag_id": "{{ .Site.Params.googleAnalytics }}",
+                "config" : {
+                  "{{ .Site.Params.googleAnalytics }}": {
+                    "groups": "default",
+                    "site_speed_sample_rate": 100
+                  }
+                }
+              }
+            }
+            </script>
+        </amp-analytics>
     </body>
 
 </html>

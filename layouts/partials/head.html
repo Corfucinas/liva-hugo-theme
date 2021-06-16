@@ -9,13 +9,11 @@
 
   {{ "<!-- preconnect -->" | safeHTML }}
   <link rel="preload" href="/css/themify.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net">
-  <link rel="dns-prefetch" href="https://partner.googleadservices.com">
-  <link rel="dns-prefetch" href="https://adservice.google.com">
-  <link rel="dns-prefetch" href="https://www.google-analytics.com">
+  <link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com/" crossorigin>
 
+  {{ "<!-- AMP -->" | safeHTML }}
   <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
 
   {{ "<!-- css & js plugins start-->" | safeHTML }}
   {{- partial "bundle.html"  -}}
@@ -35,16 +33,6 @@
       new Darkmode(options).showWidget();
     }
     window.addEventListener('load', addDarkmodeWidget);
-  </script>
-
-  {{ "<!-- google analytics -->" | safeHTML }}
-  <script async defer src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', '{{ .Site.Params.googleAnalytics }}');
   </script>
 
   {{ "<!-- adSense -->" | safeHTML }}
@@ -186,8 +174,8 @@
   {{ end }}
 
 
-  {{ "<!-- seo_schema -->" | safeHTML }}
+  {{ "<!-- seo-schema -->" | safeHTML }}
 
-  {{ partial "seo_schema" . }}
+  {{ partial "seo-schema" . }}
 
 </head>

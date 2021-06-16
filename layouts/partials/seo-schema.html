@@ -4,23 +4,37 @@
         "@type" : "CreativeWork",
         "mainEntityOfPage": {
              "@type": "WebPage",
-             "@id": "{{ .Site.BaseURL }}"
+             "@id": "{{ .Permalink }}"
         },
         "articleSection" : "{{ .Section }}",
         "name" : "{{ .Title }}",
         "headline" : "{{ .Title }}",
+        "image":
+        [
+                "{{ .Params.Image | absURL }}.webp"
+        ],
         "description" : "{{if .IsPage}}{{ .Page.Description }}{{ else }}{{ if .Site.Params.Description }}{{ .Site.Params.Description }}{{ end }}{{ end }}",
         "inLanguage" : "{{ .Lang }}",
-        "author" : "{{ .Site.Params.Author }}",
+        "author" :
+        [
+            @type: "Person",
+            "name":"{{ .Site.Params.Author }}"
+        ],
         "creator" : "{{ .Site.Params.Author }}",
-        "publisher": "{{ .Site.Params.Author }}",
-        "accountablePerson" : "{{ .Site.Params.Author }}",
+        "publisher":
+        [
+        @type: "Organization",
+        "name": "Absolute Array",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ .Site.Params.Baseurl | absURL }}images/favicon/website-logo.png"
+        }],
         "copyrightHolder" : "{{ .Site.Params.Author }}",
         "copyrightYear" : "{{ .Date.Format "2006" }}",
         "datePublished": "{{ .Date | safeHTML }}",
         "dateModified" : "{{ .Date | safeHTML }}",
         "url" : "{{ .Permalink }}",
         "wordCount" : "{{ .WordCount }}",
-        "keywords" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}"{{ . }}",{{ end }}{{ end }}"Blog" ]
+        "keywords" : [ {{ if isset .Params "tags" }}{{ range .Params.tags }}"{{ . }}",{{ end }}{{ end }} ]
     }
     </script>
