@@ -8,7 +8,6 @@
   <title itemprop="name">{{ .Site.Title }}</title>
 
   {{ "<!-- preconnect -->" | safeHTML }}
-  <link rel="preload" href="/css/themify.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect dns-prefetch" href="https://fonts.gstatic.com/" crossorigin>
 
   {{ "<!-- AMP -->" | safeHTML }}
@@ -23,12 +22,11 @@
   {{ "<!-- Darkmode -->" | safeHTML }}
   <script>
     const options = {
-      time: '0.6s', // default: '0.3s'
+      time: '0.65s', // default: '0.3s'
       saveInCookies: true, // default: true,
       label: '🌓', // default: ''
       autoMatchOsTheme: true // default: true
     }
-
     function addDarkmodeWidget() {
       new Darkmode(options).showWidget();
     }

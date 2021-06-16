@@ -5,8 +5,11 @@
 {{ $mainstyle := resources.Get "scss/style.scss" | resources.ToCSS  }}
 
 {{ "<!-- main stylesheet -->" | safeHTML }}
-{{ $allcss := slice $cssbootstrap $slick $themify $mainstyle | resources.Concat "/css/vendor.css" | resources.PostCSS (dict "config" "postcss.config.js") | resources.Minify | resources.Fingerprint "sha512" | resources.PostProcess }}
-<link rel="preload" href="{{ $allcss.RelPermalink }}" as="style" onload="this.rel='stylesheet'">
+{{ $allcss := slice $cssbootstrap $slick $mainstyle | resources.Concat "/css/vendor.css" | resources.PostCSS (dict "config" "postcss.config.js") | resources.Minify | resources.Fingerprint "sha512" | resources.PostProcess }}
+<style amp-custom>
+{{ $allcss.Content | safeCSS }}
+</style>
+<link rel="preload" href="{{ $themify.RelPermalink }}" as="style" onload="this.rel='stylesheet'">
 
 {{ "<!-- js plugins -->" | safeHTML }}
 <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>

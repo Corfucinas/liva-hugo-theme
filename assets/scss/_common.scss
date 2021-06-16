@@ -37,7 +37,7 @@ a:focus {
 }
 
 a.text-primary:hover {
-  color: $primary-color !important;
+  color: $primary-color ;
 }
 
 a,
@@ -80,7 +80,7 @@ a:hover {
 }
 
 .border-primary {
-  border-color: $border-color !important;
+  border-color: $border-color ;
 }
 
 /* overlay */
@@ -101,27 +101,27 @@ a:hover {
 }
 
 .outline-0 {
-  outline: 0 !important;
+  outline: 0 ;
 }
 
 .d-unset {
-  display: unset !important;
+  display: unset ;
 }
 
 .bg-primary {
-  background: $primary-color !important;
+  background: $primary-color;
 }
 
 .text-primary {
-  color: $primary-color !important;
+  color: $primary-color ;
 }
 
 .text-dark {
-  color: $text-color-dark !important;
+  color: $text-color-dark ;
 }
 
 .text-light {
-  color: $text-color-light !important;
+  color: $text-color-light ;
 }
 
 .text-color {
@@ -129,43 +129,43 @@ a:hover {
 }
 
 .mb-10 {
-  margin-bottom: 10px !important;
+  margin-bottom: 10px ;
 }
 
 .mb-20 {
-  margin-bottom: 20px !important;
+  margin-bottom: 20px ;
 }
 
 .mb-30 {
-  margin-bottom: 30px !important;
+  margin-bottom: 30px ;
 }
 
 .mb-40 {
-  margin-bottom: 40px !important;
+  margin-bottom: 40px ;
 }
 
 .mb-50 {
-  margin-bottom: 50px !important;
+  margin-bottom: 50px ;
 }
 
 .mb-60 {
-  margin-bottom: 60px !important;
+  margin-bottom: 60px ;
 }
 
 .mb-70 {
-  margin-bottom: 70px !important;
+  margin-bottom: 70px ;
 }
 
 .mb-80 {
-  margin-bottom: 80px !important;
+  margin-bottom: 80px ;
 }
 
 .mb-90 {
-  margin-bottom: 90px !important;
+  margin-bottom: 90px ;
 }
 
 .mb-100 {
-  margin-bottom: 100px !important;
+  margin-bottom: 100px;
 }
 
 .zindex-1 {
@@ -177,11 +177,11 @@ a:hover {
 }
 
 .border-primary {
-  border-color: $primary-color !important;
+  border-color: $primary-color;
 }
 
 .font-weight-medium {
-  font-weight: 500 !important;
+  font-weight: 500;
 }
 
 /* form control */
@@ -208,7 +208,7 @@ a.bg-primary:focus,
 a.bg-primary:hover,
 button.bg-primary:focus,
 button.bg-primary:hover {
-  background: $primary-color !important;
+  background: $primary-color;
 }
 
 .cookie-box {

@@ -100,13 +100,13 @@
 
 {{ "<!-- Main script -->" | safeHTML }}
 {{ $script := resources.Get "js/script.js" | minify | fingerprint "sha512" }}
-<script src="{{ $script.Permalink }}"></script>
+<script async defer src="{{ $script.Permalink }}"></script>
 
 {{ $fusejs := resources.Get "plugins/search/fuse.min.js" }}
 {{ $markjs := resources.Get "plugins/search/mark.js" }}
 {{ $search := resources.Get "plugins/search/search.js" }}
 {{ $searchjs := slice $fusejs $markjs $search | resources.Concat "/js/searchjs.js" | minify | fingerprint "sha512" }}
-<script src="{{ $searchjs.RelPermalink }}"></script>
+<script async defer src="{{ $searchjs.RelPermalink }}"></script>
 
 
 <section>

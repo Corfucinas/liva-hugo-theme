@@ -27,8 +27,8 @@
   &:hover,
   &.focus,
   &.active {
-    background  : $primary-color !important;
-    border-color: $primary-color !important;
+    background  : $primary-color ;
+    border-color: $primary-color ;
   }
 }
 
@@ -41,8 +41,8 @@
   &:hover,
   &.focus,
   &.active {
-    background  : $primary-color !important;
-    border-color: $primary-color !important;
+    background  : $primary-color;
+    border-color: $primary-color;
     color       : $white;
   }
 }
