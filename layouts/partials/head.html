@@ -64,7 +64,7 @@
     content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
 
   {{ "<!-- Link Tags -->" | safeHTML }}
-  <base href="{{ .Permalink }}" target="_blank">
+  <base href="{{ .Permalink }}">
   <link itemprop="url" href="{{ .Permalink }}">
   <link rel="canonical" href="{{ .Permalink }}">
   <meta name="url" content="{{ .Permalink }}">
