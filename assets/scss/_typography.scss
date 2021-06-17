@@ -1,5 +1,10 @@
 /*  typography */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+
+@font-face {
+  font-family: "Fira Sans";
+  src: url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+  font-display: swap;
+}
 
 body {
   line-height           : 1.2;

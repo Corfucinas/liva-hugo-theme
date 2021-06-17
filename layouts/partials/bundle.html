@@ -9,7 +9,7 @@
 <style amp-custom>
 {{ $allcss.Content | safeCSS }}
 </style>
-<noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+{{- partial "amp-boilerplate.html" }}
 <link rel="preload" href="{{ $themify.RelPermalink }}" as="style" onload="this.rel='stylesheet'">
 
 {{ "<!-- js plugins -->" | safeHTML }}
