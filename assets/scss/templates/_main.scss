@@ -149,10 +149,10 @@
     margin-bottom: 10px;
 
     a {
-      color: $text-color;
+      color: black;
 
       &:hover {
-        color: $primary-color;
+        filter: brightness(150%);
       }
     }
   }
