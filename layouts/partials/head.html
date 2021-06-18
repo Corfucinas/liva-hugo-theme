@@ -11,8 +11,17 @@
 
   {{ "<!-- AMP -->" | safeHTML }}
   <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
   <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+
+  {{ "<!-- Global site tag (gtag.js) - Google Analytics -->" | safeHTML }}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', '{{ .Site.Params.googleAnalytics }}');
+  </script>
 
   {{ "<!-- css & js plugins start-->" | safeHTML }}
   {{- partial "bundle.html"  -}}

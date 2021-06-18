@@ -1,29 +1,13 @@
 <!DOCTYPE html>
 <html amp lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}" prefix="og: http://ogp.me/ns#">
-    {{- partial "head.html" . -}}
+  {{- partial "head.html" . -}}
 
-    <body>
-        {{- partial "preloader.html" . -}}
-        {{- partial "header.html" . -}}
-        {{- block "main" . }}{{- end }}
-        {{- partial "footer.html" . -}}
-        {{- partial "serviceworker.html"  -}}
-        {{ "<!-- google/amp analytics -->" | safeHTML }}
-        <amp-analytics type="gtag" data-credentials="include">
-            <script type="application/json">
-            {
-              "vars" : {
-                "gtag_id": "{{ .Site.Params.googleAnalytics }}",
-                "config" : {
-                  "{{ .Site.Params.googleAnalytics }}": {
-                    "groups": "default",
-                    "site_speed_sample_rate": 100
-                  }
-                }
-              }
-            }
-            </script>
-        </amp-analytics>
-    </body>
+  <body>
+    {{- partial "preloader.html" . -}}
+    {{- partial "header.html" . -}}
+    {{- block "main" . }}{{- end }}
+    {{- partial "footer.html" . -}}
+    {{- partial "serviceworker.html"  -}}
+  </body>
 
 </html>
