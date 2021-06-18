@@ -6,10 +6,10 @@
 
 {{ "<!-- main stylesheet -->" | safeHTML }}
 {{ $allcss := slice $cssbootstrap $slick $mainstyle | resources.Concat "/css/vendor.css" | resources.PostCSS (dict "config" "postcss.config.js") | resources.Minify | resources.Fingerprint "sha512" | resources.PostProcess }}
+{{- partial "amp-boilerplate.html" . -}}
 <style amp-custom>
 {{ $allcss.Content | safeCSS }}
 </style>
-{{- partial "amp-boilerplate.html" }}
 <link rel="preload" href="{{ $themify.RelPermalink }}" as="style" onload="this.rel='stylesheet'">
 
 {{ "<!-- js plugins -->" | safeHTML }}
