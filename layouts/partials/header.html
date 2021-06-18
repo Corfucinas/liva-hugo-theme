@@ -4,11 +4,11 @@
     {{ "<!-- navbar -->" | safeHTML }}
     <nav class="navbar navbar-expand-lg navbar-white bg-transparent border-bottom pl-0">
       <a class="navbar-brand mobile-view" href="{{ .Site.BaseURL }}" aria-label="home button navigation">
-        <picture class="logo-image">
+        <div class="logo-image">
           <amp-img class="img-fluid lazyload blur-up" data-src="{{ .Site.Params.logo | absURL }}"
             src="{{ .Site.Params.logo | absURL }}" data-sizes="auto" alt="{{ .Site.Title }}" height="48" width="48">
           </amp-img>
-        </picture>
+        </div>
       </a>
       <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation"
         aria-label="navbar toggler button">
@@ -28,11 +28,11 @@
         </div>
 
         <a class="navbar-brand mx-auto desktop-view" href="{{ .Site.BaseURL }}">
-          <picture class="logo-image">
+          <div class="logo-image">
             <amp-img class="img-fluid lazyload blur-up" data-src="{{ .Site.Params.logo | absURL }}"
               src="{{ .Site.Params.logo | absURL }}" data-sizes="auto" alt="{{ .Site.Title }}" height="48" width="48">
             </amp-img>
-          </picture>
+          </div>
         </a>
         <ul class="navbar-nav">
           {{ range .Site.Menus.main }}
