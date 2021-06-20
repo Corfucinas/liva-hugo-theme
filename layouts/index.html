@@ -1,31 +1,27 @@
 {{ define "main" }}
 
-
-
-<!-- featured post -->
+{{ "<!-- featured post -->" | safeHTML }}
 <section class="section-sm">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-10 featured-post-slider">
-        <!-- slider item -->
+        {{ "<!-- slider item -->" | safeHTML }}
         {{ range ( where .Site.RegularPages "Type" "featured" )}}
         <article class="card featured-post">
           <div class="row no-gutters align-items-center">
             <div class="col-md-5">
               {{ if .Params.Image }}
               <figure>
-                <picture>
-                  <!-- Large screens -->
-                  <source media="(min-width: 535px)" data-srcset="{{ .Params.Image | absURL }}.webp 1x,
-                              {{ .Params.Image | absURL }}@2x.webp 2x">
-                  <!-- Small screens -->
-                  <source media="(max-width: 534px)" data-srcset="{{ .Params.Image | absURL }}-sm.webp 1x,
-                              {{ .Params.Image | absURL }}-sm@2x.webp 2x">
-                  <!-- Fallback -->
-                  <img data-src="{{ .Params.Image | absURL }}.webp"
-                    data-srcset="{{ .Params.Image | absURL }}@2x.webp 2x" alt="{{ .Title | markdownify }}"
-                    class="card-img lazyload blur-up" width="100%" height="100%" data-sizes="auto">
-                </picture>
+                {{ "<!-- amp-image -->" | safeHTML }}
+                <amp-img class="card-img" src="{{ .Params.Image | absURL }}.webp"
+                  srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 535w, {{ .Params.Image | absURL }}-sm@2x.webp 534w"
+                  width="383" height="383" layout="intrinsic" alt="{{ .Title | markdownify }}">
+                  <noscript>
+                    <img src="{{ .Params.Image | absURL }}.webp" width="383" height="383"
+                      alt="{{ .Title | markdownify }}">
+                  </noscript>
+                  <div fallback>Go online to see the image</div>
+                </amp-img>
               </figure>
               {{ end }}
             </div>
@@ -50,9 +46,9 @@
     </div>
   </div>
 </section>
-<!-- /featured post -->
+{{ "<!-- featured post ends -->" | safeHTML }}
 
-<!-- recent post -->
+{{ "<!-- recent post -->" | safeHTML }}
 <section>
   <div class="container">
     <div class="row">
@@ -80,9 +76,9 @@
     </div>
   </div>
 </section>
-<!-- /recent post -->
+{{ "<!-- recent post ends -->" | safeHTML }}
 
-<!-- blog post -->
+{{ "<!-- blog post -->" | safeHTML }}
 <section class="section pb-0">
   <div class="container">
     <div class="row">
@@ -94,19 +90,16 @@
             <article class="card">
               {{ if .Params.Image }}
               <picture>
-                <figure>
-                  <picture>
-                    <!-- Large screens -->
-                    <source media="(min-width: 535px)" data-srcset="{{ .Params.Image | absURL }}.webp 1x,
-                                {{ .Params.Image | absURL }}@2x.webp 2x">
-                    <!-- Small screens -->
-                    <source media="(max-width: 534px)" data-srcset="{{ .Params.Image | absURL }}-sm.webp 1x,
-                                {{ .Params.Image | absURL }}-sm@2x.webp 2x">
-                    <!-- Fallback -->
-                    <img data-src="{{ .Params.Image | absURL }}.webp"
-                      data-srcset="{{ .Params.Image | absURL }}@2x.webp 2x" alt="{{ .Title | markdownify }}"
-                      class="card-img-top lazyload blur-up" width="100%" height="100%" data-sizes="auto">
-                  </picture>
+                {{ "<!-- amp-image -->" | safeHTML }}
+                <amp-img class="card-img-top" src="{{ .Params.Image | absURL }}.webp"
+                  srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 535w, {{ .Params.Image | absURL }}-sm@2x.webp 534w"
+                  width="383" height="383" layout="intrinsic" alt="{{ .Title | markdownify }}">
+                  <noscript>
+                    <img src="{{ .Params.Image | absURL }}.webp" width="383" height="383"
+                      alt="{{ .Title | markdownify }}">
+                  </noscript>
+                  <div fallback>Go online to see the image</div>
+                </amp-img>
                 </figure>
                 {{ end }}
                 <div class="card-body px-0">
@@ -130,17 +123,17 @@
           {{ end }}
         </div>
       </div>
-      <!-- sidebar -->
+      {{ "<!-- sidebar -->" | safeHTML }}
       {{ partial "sidebar.html" . }}
-      <!-- /sidebar -->
+      {{ "<!-- sidebar ends -->" | safeHTML }}
 
-      <!-- pagination -->
+      {{ "<!-- pagination post -->" | safeHTML }}
       <div class="col-12 mt-5">
         {{ template "_internal/pagination.html" . }}
       </div>
     </div>
   </div>
 </section>
-<!-- /blog post -->
+{{ "<!-- blog post ends -->" | safeHTML }}
 
 {{ end }}

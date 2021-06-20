@@ -5,16 +5,16 @@
     <h4 class="widget-title">{{ .Title | markdownify }}</h4>
     {{ if .Params.Image }}
     <figure>
-      <picture>
-        <source media="(min-width: 535px)" data-srcset="{{ .Params.Image | absURL }}.webp 1x,
-                    {{ .Params.Image | absURL }}@2x.webp 2x">
-        <source media="(max-width: 534px)" data-srcset="{{ .Params.Image | absURL }}-sm.webp 1x,
-                    {{ .Params.Image | absURL }}-sm@2x.webp 2x">
-        <img data-src="{{ .Params.Image | absURL }}.webp" data-srcset="{{ .Params.Image | absURL }}@2x.webp 2x"
-          alt="author of the website"
-          class="img-fluid author-thumb-sm d-block mx-auto rounded-circle mb-4 lazyload blur-up" width="100%"
-          height="100%" data-sizes="auto">
-      </picture>
+      {{ "<!-- amp-image -->" | safeHTML }}
+      <amp-img class="img-fluid author-thumb-sm d-block mx-auto rounded-circle mb-4"
+        src="{{ .Params.Image | absURL }}.webp"
+        srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 535w,  {{ .Params.Image | absURL }}-sm@2x.webp 534w"
+        width="165" height="165" layout="intrinsic" alt="author of the website">
+        <noscript>
+          <img src="{{ .Params.Image | absURL }}.webp" width="165" height="165" alt="author of the website">
+        </noscript>
+        <div fallback>Go online to see the image</div>
+      </amp-img>
     </figure>
     {{ end }}
     <p dir="ltr">{{ .Summary }}</p>

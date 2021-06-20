@@ -2,18 +2,16 @@
     <article class="card">
         {{ if .Params.Image }}
         <figure>
-            <picture>
-                <!-- Large screens -->
-                <source media="(min-width: 535px)" data-srcset="{{ .Params.Image | absURL }}.webp 1x,
-                          {{ .Params.Image | absURL }}@2x.webp 2x">
-                <!-- Small screens -->
-                <source media="(max-width: 534px)" data-srcset="{{ .Params.Image | absURL }}-sm.webp 1x,
-                          {{ .Params.Image | absURL }}-sm@2x.webp 2x">
-                <!-- Fallback -->
-                <img data-src="{{ .Params.Image | absURL }}.webp" data-srcset="{{ .Params.Image | absURL }}@2x.webp 2x"
-                    alt="{{ .Title | markdownify }}" class="card-img-top lazyload blur-up" width="100%" height="100%"
-                    data-sizes="auto">
-            </picture>
+            {{ "<!-- amp-image -->" | safeHTML }}
+            <amp-img class="card-img-top" src="{{ .Params.Image | absURL }}.webp"
+                srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 535w, {{ .Params.Image | absURL }}-sm@2x.webp 534w"
+                width="383" height="383" layout="intrinsic" alt="{{ .Title | markdownify }}">
+                <noscript>
+                    <img src="{{ .Params.Image | absURL }}.webp" width="383" height="383"
+                        alt="{{ .Title | markdownify }}">
+                </noscript>
+                <div fallback>Go online to see the image</div>
+            </amp-img>
         </figure>
         {{ end }}
         <div class="card-body px-0">

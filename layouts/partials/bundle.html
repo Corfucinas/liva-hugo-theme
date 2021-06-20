@@ -17,10 +17,9 @@
 {{ $jquery := resources.Get "plugins/jQuery/jquery.min.js" }}
 {{ $jsbootstrap := resources.Get "plugins/bootstrap/bootstrap.min.js" }}
 {{ $slickjs := resources.Get "plugins/slick/slick.min.js" }}
-{{ $lazyimage := resources.Get "plugins/lazysize/lazysizes.min.js" }}
 {{ $darkmode := resources.Get "plugins/darkmode/darkmode.1.5.7.min.js" }}
 {{ $cookies := resources.Get "plugins/cookies/js.cookie-2.2.1.min.js" }}
 {{ $tabs := resources.Get "js/tabs.js" }}
 {{ "<!-- bundled js -->" | safeHTML }}
-{{ $alljs := slice $jquery $jsbootstrap $slickjs $lazyimage $darkmode $cookies $tabs | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
+{{ $alljs := slice $jquery $jsbootstrap $slickjs $darkmode $cookies $tabs | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
 <script> {{ $alljs.Content | safeJS }} </script>
