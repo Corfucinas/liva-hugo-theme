@@ -6,7 +6,8 @@
       <a class="navbar-brand mobile-view" href="{{ .Site.BaseURL }}" aria-label="home button navigation">
         <div class="logo-image">
           <amp-img class="img-fluid lazyload blur-up" data-src="{{ .Site.Params.logo | absURL }}"
-            src="{{ .Site.Params.logo | absURL }}" data-sizes="auto" alt="{{ .Site.Title }}" height="48" width="48">
+            src="{{ .Site.Params.logo | absURL }}" data-sizes="auto" alt="{{ .Site.Title }}" height="48" width="48"
+            noloading>
           </amp-img>
         </div>
       </a>
@@ -30,7 +31,8 @@
         <a class="navbar-brand mx-auto desktop-view" href="{{ .Site.BaseURL }}">
           <div class="logo-image">
             <amp-img class="img-fluid lazyload blur-up" data-src="{{ .Site.Params.logo | absURL }}"
-              src="{{ .Site.Params.logo | absURL }}" data-sizes="auto" alt="{{ .Site.Title }}" height="48" width="48">
+              src="{{ .Site.Params.logo | absURL }}" data-sizes="auto" alt="{{ .Site.Title }}" height="48" width="48"
+              noloading>
             </amp-img>
           </div>
         </a>
