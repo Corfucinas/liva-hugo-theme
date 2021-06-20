@@ -89,7 +89,6 @@
           <div class="col-md-6 mb-4">
             <article class="card">
               {{ if .Params.Image }}
-              <picture>
                 {{ "<!-- amp-image -->" | safeHTML }}
                 <amp-img class="card-img-top" src="{{ .Params.Image | absURL }}.webp"
                   srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 535w, {{ .Params.Image | absURL }}-sm@2x.webp 534w"
