@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html amp lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}" prefix="og: http://ogp.me/ns#">
+
+
+
+    <head itemscope itemtype="{{ .Site.BaseURL }}">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+
+        {{ "<!-- Title -->" | safeHTML }}
+        <title itemprop="name">{{ .Site.Title }}</title>
+
+        {{ "<!-- Description Tags -->" | safeHTML }}
+        <meta name="description"
+            content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+        <meta itemprop="description"
+            content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+        <meta property="og:description"
+            content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+        <meta name="twitter:description"
+            content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+
+
+    </head>
+
+
+    <body>
+        <div class="text-center"><img class="img-fluid mb-5"
+                src="https://user-images.githubusercontent.com/37659754/64060567-7cece400-cbf0-11e9-9cf9-abac3543ec1f.png"
+                alt="404">
+            <h3>Nothing found, go back!</h3>
+        </div>
+    </body>
+
+</html>
