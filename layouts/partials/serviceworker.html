@@ -1,2 +1,12 @@
-<amp-install-serviceworker src="{{ .Site.Params.absURL }}sw.js" layout="nodisplay">
-</amp-install-serviceworker>
+<script>
+    if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+            navigator.serviceWorker
+                .register("/sw.js")
+                .then((swReg) => { })
+                .catch((err) => {
+                    console.error("Service Worker Error", err);
+                });
+        });
+    }
+</script>
