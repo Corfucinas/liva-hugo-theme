@@ -14,7 +14,7 @@
               <figure>
                 {{ "<!-- amp-image -->" | safeHTML }}
                 <amp-img class="card-img" src="{{ .Params.Image | absURL }}.webp"
-                  srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 535w, {{ .Params.Image | absURL }}-sm@2x.webp 534w"
+                  srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 675w, {{ .Params.Image | absURL }}-sm@2x.webp 480w"
                   width="383" height="383" layout="intrinsic" alt="{{ .Title | markdownify }}">
                   <noscript>
                     <img src="{{ .Params.Image | absURL }}.webp" width="383" height="383"
@@ -91,7 +91,7 @@
               {{ if .Params.Image }}
                 {{ "<!-- amp-image -->" | safeHTML }}
                 <amp-img class="card-img-top" src="{{ .Params.Image | absURL }}.webp"
-                  srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 535w, {{ .Params.Image | absURL }}-sm@2x.webp 534w"
+                  srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 675w, {{ .Params.Image | absURL }}-sm@2x.webp 480w"
                   width="383" height="383" layout="intrinsic" alt="{{ .Title | markdownify }}">
                   <noscript>
                     <img src="{{ .Params.Image | absURL }}.webp" width="383" height="383"

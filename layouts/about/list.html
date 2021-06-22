@@ -8,7 +8,7 @@
         <figure>
           {{ "<!-- amp-image -->" | safeHTML }}
           <amp-img class="img-fluid d-block mx-auto rounded-circle mb-4" src="{{ .Params.Image | absURL }}.webp"
-            srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 535w, {{ .Params.Image | absURL }}-sm@2x.webp 534w"
+            srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 675w, {{ .Params.Image | absURL }}-sm@2x.webp 480w"
             width="730" height="733" layout="intrinsic" alt="{{ .Title | markdownify }}">
             <noscript>
               <img src="{{ .Params.Image | absURL }}.webp" width="383" height="383" alt="{{ .Title | markdownify }}">
@@ -42,7 +42,7 @@
           <figure>
             {{ "<!-- amp-image -->" | safeHTML }}
             <amp-img class="img-fluid w-100" src="{{ .Params.Image | absURL }}.webp"
-              srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 535w,  {{ .Params.Image | absURL }}-sm@2x.webp 534w"
+              srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 675w,  {{ .Params.Image | absURL }}-sm@2x.webp 480w"
               width="383" height="383" layout="intrinsic" alt="image gallery">
               <noscript>
                 <img src="{{ .Params.Image | absURL }}.webp" width="383" height="383" alt="{{ .Title | markdownify }}">

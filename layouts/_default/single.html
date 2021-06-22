@@ -21,7 +21,7 @@
           <figure>
             {{ "<!-- amp-image -->" | safeHTML }}
             <amp-img class="img-fluid w-100 mb-4" src="{{ .Params.Image | absURL }}.webp"
-              srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 535w, {{ .Params.Image | absURL }}-sm@2x.webp 534w"
+              srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 675w, {{ .Params.Image | absURL }}-sm@2x.webp 480w"
               width="730" height="730" layout="intrinsic" alt="{{ .Title | markdownify }}">
               <noscript>
                 <img src="{{ .Params.Image | absURL }}.webp" width="730" height="730" alt="{{ .Title | markdownify }}">
