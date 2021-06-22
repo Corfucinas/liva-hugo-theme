@@ -19,11 +19,7 @@
         font-display: block
     }
 
-        {
-            {
-            $allcss.Content | safeCSS
-        }
-    }
+    {{ $allcss.Content | safeCSS }}
 
 </style>
 
@@ -39,7 +35,7 @@
 {{ "<!-- bundled js -->" | safeHTML }}
 {{ $alljs := slice $jquery $jsbootstrap $slickjs $darkmode $cookies $tabs | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
 <amp-script>
-    <script> { { $alljs.Content | safeJS } }</script>
+    <script> {{ $alljs.Content | safeJS }} </script>
     <script>
         (function ($) {
             const cookieBox = document.getElementById('js-cookie-box');
