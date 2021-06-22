@@ -12,8 +12,7 @@
 <style amp-custom>
     @font-face {
         font-family: 'themify';
-        src: url("{{ $woff2.RelPermalink }}") format('woff2'),
-        url("{{ $woff.RelPermalink }}") format('woff');
+        src: url("{{ $woff2.RelPermalink }}") format('woff2'), url("{{ $woff.RelPermalink }}") format('woff');
         font-weight: 400;
         font-style: normal;
         font-display: block
@@ -34,53 +33,4 @@
 {{ $tabs := resources.Get "js/tabs.js" }}
 {{ "<!-- bundled js -->" | safeHTML }}
 {{ $alljs := slice $jquery $jsbootstrap $slickjs $darkmode $cookies $tabs | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
-<amp-script>
-    <script> {{ $alljs.Content | safeJS }} </script>
-    <script>
-        (function ($) {
-            const cookieBox = document.getElementById('js-cookie-box');
-            const cookieButton = document.getElementById('js-cookie-button');
-            if (!Cookies.get('cookie-box')) {
-                cookieBox.classList.remove('cookie-box-hide');
-                cookieButton.onclick = function () {
-                    Cookies.set('cookie-box', true, {
-                        expires: {{ site.Params.cookies.expire_days }}
-            });
-            cookieBox.classList.add('cookie-box-hide');
-        };
-            }
-        }) (jQuery);
-    </script>
-
-    {{ "<!-- Darkmode -->" | safeHTML }}
-    <script>
-        const options = {
-            time: '0.65s', // default: '0.3s'
-            saveInCookies: true, // default: true,
-            label: '🌓', // default: ''
-            autoMatchOsTheme: true // default: true
-        }
-        function addDarkmodeWidget() {
-            new Darkmode(options).showWidget();
-        }
-        window.addEventListener('load', addDarkmodeWidget);
-    </script>
-
-    <script>
-        const indexURL = {{ "index.json" | absURL }}
-    </script>
-
-    {{ "<!-- Main script -->" | safeHTML }}
-    {{ $script := resources.Get "js/script.js" | minify | fingerprint "sha512" }}
-    <script async defer src="{{ $script.Permalink }}"></script>
-
-    {{ $fusejs := resources.Get "plugins/search/fuse.min.js" }}
-    {{ $markjs := resources.Get "plugins/search/mark.js" }}
-    {{ $search := resources.Get "plugins/search/search.js" }}
-    {{ $searchjs := slice $fusejs $markjs $search | resources.Concat "/js/searchjs.js" | minify | fingerprint "sha512" }}
-    <script async defer src="{{ $searchjs.RelPermalink }}"></script>
-
-    {{ $script := resources.Get "js/captcha.js" | js.Build "captcha.js" | minify | fingerprint "sha512"}}
-    <script sync src="{{ $script.Permalink }}"></script>
-
-</amp-script>
+<script> {{ $alljs.Content | safeJS }} </script>
