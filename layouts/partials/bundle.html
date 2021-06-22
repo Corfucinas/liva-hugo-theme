@@ -2,13 +2,24 @@
 {{ $cssbootstrap := resources.Get "plugins/bootstrap/bootstrap.min.css" }}
 {{ $slick := resources.Get "plugins/slick/slick.css" }}
 {{ $themify := resources.Get "plugins/themify-icons/themify-icons.css" }}
+{{ $woff := resources.Get "plugins/themify-icons/themify.woff" }}
+{{ $woff2 := resources.Get "plugins/themify-icons/themify.woff2" }}
 {{ $mainstyle := resources.Get "scss/style.scss" | resources.ToCSS  }}
 
 {{ "<!-- main stylesheet -->" | safeHTML }}
-{{ $allcss := slice $cssbootstrap $slick $mainstyle | resources.Concat "/css/vendor.css" | resources.PostCSS (dict "config" "postcss.config.js") | resources.Minify | resources.Fingerprint "sha512" | resources.PostProcess }}
+{{ $allcss := slice $cssbootstrap $slick $mainstyle $themify | resources.Concat "/css/vendor.css" | resources.PostCSS (dict "config" "postcss.config.js") | resources.Minify | resources.Fingerprint "sha512" | resources.PostProcess }}
 {{- partial "amp-boilerplate.html" . -}}
 <style amp-custom>
-{{ $allcss.Content | safeCSS }}
+    @font-face {
+        font-family: 'themify';
+        src: url("{{ $woff2.RelPermalink }}") format('woff2'), url("{{ $woff.RelPermalink }}") format('woff');
+        font-weight: 400;
+        font-style: normal;
+        font-display: block
+    }
+
+    {{ $allcss.Content | safeCSS }}
+
 </style>
 <link rel="preload" href="{{ $themify.RelPermalink }}" as="style" onload="this.rel='stylesheet'">
 
