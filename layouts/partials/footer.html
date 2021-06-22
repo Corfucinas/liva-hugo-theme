@@ -94,19 +94,7 @@
   </footer>
 </section>
 
-<script>
-  const indexURL = {{ "index.json" | absURL }}
-</script>
 
-{{ "<!-- Main script -->" | safeHTML }}
-{{ $script := resources.Get "js/script.js" | minify | fingerprint "sha512" }}
-<script async defer src="{{ $script.Permalink }}"></script>
-
-{{ $fusejs := resources.Get "plugins/search/fuse.min.js" }}
-{{ $markjs := resources.Get "plugins/search/mark.js" }}
-{{ $search := resources.Get "plugins/search/search.js" }}
-{{ $searchjs := slice $fusejs $markjs $search | resources.Concat "/js/searchjs.js" | minify | fingerprint "sha512" }}
-<script async defer src="{{ $searchjs.RelPermalink }}"></script>
 
 
 <section>
@@ -116,21 +104,7 @@
     This site uses cookies. By continuing to use this website, you agree to their use. <span id="js-cookie-button"
       class="btn btn-sm btn-primary ml-2">I Accept</span>
   </div>
-  <script>
-    (function ($) {
-      const cookieBox = document.getElementById('js-cookie-box');
-      const cookieButton = document.getElementById('js-cookie-button');
-      if (!Cookies.get('cookie-box')) {
-        cookieBox.classList.remove('cookie-box-hide');
-        cookieButton.onclick = function () {
-          Cookies.set('cookie-box', true, {
-            expires: {{ site.Params.cookies.expire_days }}
-      });
-      cookieBox.classList.add('cookie-box-hide');
-    };
-		}
-	}) (jQuery);
-  </script>
+
   {{ end }}
 
 </section>
