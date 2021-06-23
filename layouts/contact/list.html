@@ -36,7 +36,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-8 text-center">
         <h2 class="mb-4">Write To Me</h2>
-        <form action-xhr="https://formspree.io/f/mjvjwolp" method="POST" class="row">
+        <form action-xhr="https://formspree.io/f/mjvjwolp" method="POST" class="row" target="_top">
           {{ $script := resources.Get "js/captcha.js" | js.Build "captcha.js" | minify | fingerprint "sha512"}}
           <script sync src="{{ $script.Permalink }}"></script>
           <div class="col-lg-6">
