@@ -15,6 +15,8 @@
   <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
   {{ end }}
   <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
+  <script async custom-element="amp-install-serviceworker"
+    src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script>
 
   {{ "<!-- Global site tag (gtag.js) - Google Analytics -->" | safeHTML }}
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.Params.googleAnalytics }}"></script>
@@ -127,7 +129,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ .Site.BaseURL | safeURL }}images/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="{{ .Site.BaseURL | safeURL }}images/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="{{ .Site.BaseURL | safeURL }}images/favicon/favicon-16x16.png">
-  <link rel="manifest" href="{{ .Site.BaseURL | safeURL }}site.webmanifest">
+  <link rel="manifest" href="{{ .Site.BaseURL | safeURL }}manifest.webmanifest">
   <link rel="mask-icon" href="{{ .Site.BaseURL | safeURL }}images/favicon/safari-pinned-tab.svg" color="#5bbad5">
   <meta name="msapplication-TileColor" content="#00aba9">
   <meta name="msapplication-config" content="{{ .Site.BaseURL | safeURL }}browserconfig.xml">

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html amp lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}" prefix="og: http://ogp.me/ns#">
+<html ⚡ lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}" prefix="og: http://ogp.me/ns#">
   {{- partial "head.html" . -}}
 
   <body>
@@ -7,7 +7,9 @@
     {{- partial "header.html" . -}}
     {{- block "main" . }}{{- end }}
     {{- partial "footer.html" . -}}
-    {{- partial "serviceworker.html"  -}}
+    <amp-install-serviceworker src="{{ .Site.BaseURL }}sw.js"
+      data-iframe-src="{{ .Site.BaseURL }}install-serviceworker.html" layout="nodisplay">
+    </amp-install-serviceworker>
   </body>
 
 </html>
