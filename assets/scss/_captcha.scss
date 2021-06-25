@@ -1,7 +1,12 @@
 #g-recaptcha-response {
-    display : block ;
+    display : block;
     position: absolute;
-    margin  : -50px 0 0 0 ;
+    margin  : -50px 0 0 0;
     z-index : -999999;
     opacity : 0;
+}
+
+.g-recaptcha {
+    display        : flex;
+    justify-content: center;
 }
