@@ -7,18 +7,19 @@
 {{ $mainstyle := resources.Get "scss/style.scss" | resources.ToCSS  }}
 
 {{ "<!-- main stylesheet -->" | safeHTML }}
-{{ $allcss := slice $cssbootstrap $slick $mainstyle $themify | resources.Concat "/css/vendor.css" | resources.PostCSS (dict "config" "postcss.config.js") | resources.Minify | resources.Fingerprint "sha512" | resources.PostProcess }}
+{{ $allcss := slice $cssbootstrap $mainstyle $themify | resources.Concat "/css/vendor.css" | resources.PostCSS (dict "config" "postcss.config.js") | resources.Minify | resources.Fingerprint "sha512" | resources.PostProcess }}
 {{- partial "amp-boilerplate.html" . -}}
 <style amp-custom>
     @font-face {
         font-family: 'themify';
-        src: url("{{ $woff2.RelPermalink }}") format('woff2'), url("{{ $woff.RelPermalink }}") format('woff');
+        src: url("{{ $woff2.RelPermalink }}") format('woff2'),
+        url("{{ $woff.RelPermalink }}") format('woff');
         font-weight: 400;
         font-style: normal;
         font-display: block
     }
 
-    {{ $allcss.Content | safeCSS }}
+        {{ $allcss.Content | safeCSS }}
 
 </style>
 
@@ -32,5 +33,5 @@
 {{ $cookies := resources.Get "plugins/cookies/js.cookie-2.2.1.min.js" }}
 {{ $tabs := resources.Get "js/tabs.js" }}
 {{ "<!-- bundled js -->" | safeHTML }}
-{{ $alljs := slice $jquery $jsbootstrap $slickjs $darkmode $cookies $tabs | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
+{{ $alljs := slice $jquery $jsbootstrap $darkmode $cookies $tabs | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
 <script> {{ $alljs.Content | safeJS }} </script>
