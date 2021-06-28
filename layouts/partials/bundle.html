@@ -33,5 +33,5 @@
 {{ $cookies := resources.Get "plugins/cookies/js.cookie-2.2.1.min.js" }}
 {{ $tabs := resources.Get "js/tabs.js" }}
 {{ "<!-- bundled js -->" | safeHTML }}
-{{ $alljs := slice $jquery $jsbootstrap $darkmode $cookies $tabs | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
+{{ $alljs := slice $jquery $darkmode $cookies $tabs | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
 <script> {{ $alljs.Content | safeJS }} </script>
