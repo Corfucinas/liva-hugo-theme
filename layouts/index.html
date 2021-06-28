@@ -6,46 +6,43 @@
     <div class="row justify-content-center">
       <div class="col-10">
         {{ "<!-- slider item -->" | safeHTML }}
-        <amp-carousel autoplay loop width="1140" height="0" type="slides" aria-label="Featured posts" role="region"
-          layout="intrinsic">
-          {{ range ( where .Site.RegularPages "Type" "featured" )}}
-          <article class="card featured-post">
-            <div class="row no-gutters">
-              <div class="col-md-5">
-                {{ if .Params.Image }}
-                <figure>
-                  {{ "<!-- amp-image -->" | safeHTML }}
-                  <amp-img class="card-img" src="{{ .Params.Image | absURL }}.webp"
-                    srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 675w, {{ .Params.Image | absURL }}-sm@2x.webp 480w"
-                    width="383" height="383" layout="intrinsic" alt="{{ .Title | markdownify }}">
-                    <noscript>
-                      <img src="{{ .Params.Image | absURL }}.webp" width="383" height="383"
-                        alt="{{ .Title | markdownify }}">
-                    </noscript>
-                    <div fallback>Go online to see the image</div>
-                  </amp-img>
-                </figure>
-                {{ end }}
-              </div>
-              <div class="col-md-6 offset-md-1">
-                <div class="card-body">
-                  <div class="mb-3 post-meta">
-                    <span>By {{ .Site.Params.Author }}</span>
-                    {{ if not .Params.HideDate }}
-                    <span class="border-bottom border-primary px-2 mx-1"></span>
-                    <span>{{ .PublishDate.Format "02 January 2006" }}</span>
-                    {{ end }}
-                  </div>
-                  <a href="{{ .Permalink }}"
-                    class="h1 font-weight-bold d-block text-dark mb-4 card-title">{{ .Title | markdownify }}</a>
-                  <p class="card-text" dir="ltr">{{.Summary}}...</p>
-                </div>
-
-              </div>
+        {{ range ( where .Site.RegularPages "Type" "featured" )}}
+        <article class="card featured-post">
+          <div class="row no-gutters">
+            <div class="col-md-5">
+              {{ if .Params.Image }}
+              <figure>
+                {{ "<!-- amp-image -->" | safeHTML }}
+                <amp-img class="card-img" src="{{ .Params.Image | absURL }}.webp"
+                  srcset="{{ .Params.Image | absURL }}.webp 535w, {{ .Params.Image | absURL }}@2x.webp 675w, {{ .Params.Image | absURL }}-sm@2x.webp 480w"
+                  width="383" height="383" layout="intrinsic" alt="{{ .Title | markdownify }}">
+                  <noscript>
+                    <img src="{{ .Params.Image | absURL }}.webp" width="383" height="383"
+                      alt="{{ .Title | markdownify }}">
+                  </noscript>
+                  <div fallback>Go online to see the image</div>
+                </amp-img>
+              </figure>
+              {{ end }}
             </div>
-          </article>
-          {{ end }}
-        </amp-carousel>
+            <div class="col-md-6 offset-md-1">
+              <div class="card-body">
+                <div class="mb-3 post-meta">
+                  <span>By {{ .Site.Params.Author }}</span>
+                  {{ if not .Params.HideDate }}
+                  <span class="border-bottom border-primary px-2 mx-1"></span>
+                  <span>{{ .PublishDate.Format "02 January 2006" }}</span>
+                  {{ end }}
+                </div>
+                <a href="{{ .Permalink }}"
+                  class="h1 font-weight-bold d-block text-dark mb-4 card-title">{{ .Title | markdownify }}</a>
+                <p class="card-text" dir="ltr">{{.Summary}}...</p>
+              </div>
+
+            </div>
+          </div>
+        </article>
+        {{ end }}
       </div>
     </div>
   </div>
