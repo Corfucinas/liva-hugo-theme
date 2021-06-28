@@ -19,11 +19,13 @@
         font-display: block
     }
 
-        {{ $allcss.Content | safeCSS }}
+    .i-amphtml-carousel-content {
+        position: relative;
+    }
 
-        .i-amphtml-carousel-content {
-            position: relative;
-        }
+    {{ $allcss.Content | safeCSS }}
+
+
 
 </style>
 
