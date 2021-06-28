@@ -10,6 +10,28 @@
     <amp-install-serviceworker src="{{ .Site.BaseURL }}sw.js"
       data-iframe-src="{{ .Site.BaseURL }}install-serviceworker.html" layout="nodisplay">
     </amp-install-serviceworker>
+
+    {{ "<!-- AMP Analytics -->" | safeHTML }}
+
+    <amp-analytics type="gtag" data-credentials="include">
+      <script type="application/json">
+      {
+        "vars" : {
+          "gtag_id": "{{ .Site.Params.googleAnalytics }}",
+          "config" : {
+            "{{ .Site.Params.googleAnalytics }}": { "groups": "default" }
+          }
+          "triggers": {
+            "trackPageview": {
+              "on": "visible",
+              "request": "pageview"
+            }
+          }
+        }
+      }
+      </script>
+    </amp-analytics>
+
   </body>
 
 </html>
