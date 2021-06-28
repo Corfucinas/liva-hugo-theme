@@ -6,13 +6,12 @@
     <div class="row justify-content-center">
       <div class="col-10">
         {{ "<!-- slider item -->" | safeHTML }}
-        <amp-carousel autoplay loop width="1140" height="504.5" type="slides" aria-label="Featured posts" role="region"
-          layout="container">
+        <amp-carousel autoplay loop width="1140" height="0" type="slides" aria-label="Featured posts" role="region"
+          layout="intrinsic">
           {{ range ( where .Site.RegularPages "Type" "featured" )}}
           <article class="card featured-post">
-            <div class="row no-gutters align-items-center">
+            <div class="row no-gutters">
               <div class="col-md-5">
-
                 {{ if .Params.Image }}
                 <figure>
                   {{ "<!-- amp-image -->" | safeHTML }}
