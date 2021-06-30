@@ -36,6 +36,9 @@
                 </div>
                 <a href="{{ .Permalink }}"
                   class="h1 font-weight-bold d-block text-dark mb-4 card-title">{{ .Title | markdownify }}</a>
+                <div class="reading-time">
+                  <p dir="ltr"> Reading time: {{.ReadingTime}} minutes </p>
+                </div>
                 <p class="card-text" dir="ltr">{{.Summary}}...</p>
               </div>
 
@@ -116,6 +119,9 @@
                   {{ end }}
                 </div>
                 <p class="card-text" dir="ltr">{{ .Summary }}</p>
+                <div class="reading-time">
+                  <p dir="ltr"> Reading time: {{.ReadingTime}} minutes </p>
+                </div>
                 <a href="{{ .Permalink }}" class="btn btn-outline-primary">Full Article</a>
               </div>
             </article>

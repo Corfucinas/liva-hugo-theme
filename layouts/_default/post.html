@@ -27,6 +27,9 @@
                 <span>{{ .PublishDate.Format "02 January 2006" }}</span>
                 {{ end }}
             </div>
+            <div class="reading-time">
+                <p dir="ltr"> Reading time: {{.ReadingTime}} minutes </p>
+            </div>
             <p class="card-text" dir="ltr">{{ .Summary }}</p>
             <a href="{{ .Permalink }}" class="btn btn-outline-primary">Full Article</a>
         </div>
