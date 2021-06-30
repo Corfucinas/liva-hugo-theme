@@ -1,7 +1,7 @@
 <script type="application/ld+json">
     {
         "@context" : "http://schema.org",
-        "@type" : "CreativeWork",
+        "@type" : "Article",
         "mainEntityOfPage": {
              "@type": "WebPage",
              "@id": "{{ .Permalink }}"
@@ -9,10 +9,12 @@
         "articleSection" : "{{ .Section }}",
         "name" : "{{ .Title }}",
         "headline" : "{{ .Title }}",
-        "image":
-        [
-                "{{ .Params.Image | absURL }}.webp"
-        ],
+        "image": {
+          "@context": "http://schema.org",
+          "@type": "ImageObject",
+          "url":  "{{ .Params.Image | absURL }}.webp",
+          "datePublished": "{{ .PublishDate.Format "2006-01-02T15:04:05" }}",
+        },
         "description" : "{{if .IsPage}}{{ .Page.Description }}{{ else }}{{ if .Site.Params.Description }}{{ .Site.Params.Description }}{{ end }}{{ end }}",
         "inLanguage" : "{{ .Lang }}",
         "author" :

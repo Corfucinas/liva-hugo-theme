@@ -1,8 +1,17 @@
 <!DOCTYPE html>
+{{ "<!--[if lt IE 7]>      <html class='no-js lt-ie9 lt-ie8 lt-ie7'> <![endif]-->" | safeHTML }}
+{{ "<!--[if IE 7]>         <html class='no-js lt-ie9 lt-ie8'> <![endif]-->" | safeHTML }}
+{{ "<!--[if IE 8]>         <html class='no-js lt-ie9'> <![endif]-->" | safeHTML }}
+{{ "<!--[if gt IE 8]>      <html class='no-js'> <!--<![endif]-->" | safeHTML }}
 <html ⚡ lang="{{ with .Site.LanguageCode }}{{ . }}{{ else }}en-US{{ end }}" prefix="og: http://ogp.me/ns#">
   {{- partial "head.html" . -}}
 
   <body>
+    {{ " <!--[if lt IE 7]>" | safeHTML }}
+    {{ "<p class='browsehappy'>You are using an <strong>outdated</strong> browser." | safeHTML  }}
+    {{ "Please <a href='#'>upgrade your browser</a> to improve your experience.</p>" | safeHTML  }}
+    {{ "<![endif]-->" | safeHTML }}
+
     {{- partial "preloader.html" . -}}
     {{- partial "header.html" . -}}
     {{- block "main" . }}{{- end }}
@@ -10,6 +19,20 @@
     <amp-install-serviceworker src="{{ .Site.BaseURL }}sw.js"
       data-iframe-src="{{ .Site.BaseURL }}install-serviceworker.html" layout="nodisplay">
     </amp-install-serviceworker>
+
+    {{ "<!-- Darkmode -->" | safeHTML }}
+    <script>
+      const options = {
+        time: '0.65s', // default: '0.3s'
+        saveInCookies: true, // default: true,
+        label: '🌓', // default: ''
+        autoMatchOsTheme: true // default: true
+      }
+      function addDarkmodeWidget() {
+        new Darkmode(options).showWidget();
+      }
+      window.addEventListener('load', addDarkmodeWidget);
+    </script>
 
     {{ "<!-- AMP Analytics -->" | safeHTML }}
 

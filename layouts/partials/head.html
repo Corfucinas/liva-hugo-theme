@@ -27,19 +27,6 @@
   {{ "<!-- css & js end -->" | safeHTML }}
 
   {{ "<!-- All scripts -->" | safeHTML }}
-  {{ "<!-- Darkmode -->" | safeHTML }}
-  <script>
-    const options = {
-      time: '0.65s', // default: '0.3s'
-      saveInCookies: true, // default: true,
-      label: '🌓', // default: ''
-      autoMatchOsTheme: true // default: true
-    }
-    function addDarkmodeWidget() {
-      new Darkmode(options).showWidget();
-    }
-    window.addEventListener('load', addDarkmodeWidget);
-  </script>
 
   {{ "<!-- adSense -->" | safeHTML }}
   <script data-ad-client="ca-pub-9717324430850040" async defer
@@ -108,6 +95,7 @@
   {{ "<!-- Sitemap & RSS Feed Tags -->" | safeHTML }}
   <link rel="sitemap" type="application/xml" title="Sitemap" href='{{ "sitemap.xml" | absURL }}'>
 
+  {{ "<!-- RSS Feed -->" | safeHTML }}
   {{ with .OutputFormats.Get "RSS" }}
   <link href="{{ .Permalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}">
   <link href="{{ .Permalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}">
@@ -181,6 +169,15 @@
 
   {{ "<!-- seo-schema -->" | safeHTML }}
 
-  {{ partial "seo-schema" . }}
+  {{ partial "seo/structured/website" . }}
+  {{ partial "seo/structured/breadcrumb" . }}
+
+
+  {{ if eq .Section "articles" }}
+  {{ partial "seo/structured/article" . }}
+  {{ end }}
+
+  {{ "<!-- seo-schema ends -->" | safeHTML }}
+
 
 </head>
