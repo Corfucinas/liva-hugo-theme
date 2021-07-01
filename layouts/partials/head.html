@@ -60,10 +60,6 @@
     content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
   <meta itemprop="keywords"
     content="{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s," $term }}{{ end }}{{ end }}" />
-  {{if .IsPage}}
-  <meta itemprop="wordCount" content="{{ .WordCount }}">
-  {{ end }}
-
 
   {{ "<!-- part of a series, link to related articles -->" | safeHTML }}
   {{ if .IsPage  }}
