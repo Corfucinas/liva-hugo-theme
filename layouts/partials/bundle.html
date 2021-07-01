@@ -36,4 +36,4 @@
 {{ $tabs := resources.Get "js/tabs.js" }}
 {{ "<!-- bundled js -->" | safeHTML }}
 {{ $alljs := slice $jquery $darkmode $cookies $tabs $jsbootstrap | resources.Concat "/js/vendor.js" | minify | fingerprint "sha512" }}
-<script> {{ $alljs.Content | safeJS }} </script>
+<script src="{{ $alljs.RelPermalink | safeJS }}"> </script>

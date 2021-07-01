@@ -159,12 +159,24 @@
     margin-bottom: 10px;
 
     a {
-      color: black;
+      background-color: $primary-color;
 
       &:hover {
         filter: brightness(150%);
+        color : $black;
       }
     }
+  }
+
+  .background-category {
+    li {
+      a {
+        color  : $white;
+        padding: 0.5rem;
+
+      }
+    }
+
   }
 }
 

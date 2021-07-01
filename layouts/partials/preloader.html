@@ -4,7 +4,7 @@
   {{ if ne .Site.Params.preloader.preloader "" }}
   {{ "<!-- amp-image -->" | safeHTML }}
   <amp-img class="card-img" src="{{ .Site.Params.preloader.preloader | absURL }}" width="50" height="50" layout="fill"
-    alt="" aria-label="preloader" noloading>
+    alt="preloader" aria-label="preloader" noloading>
     <noscript>
       <img src="{{ .Site.Params.preloader.preloader | absURL }}" width="50" height="50" alt="" aria-label="preloader">
     </noscript>

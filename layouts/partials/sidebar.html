@@ -26,7 +26,7 @@
     <h4 class="widget-title">Category</h4>
     {{- if isset .Site.Taxonomies "categories" }}
     {{- if not (eq (len .Site.Taxonomies.categories) 0) }}
-    <ul class="list-unstyled">
+    <ul class="list-unstyled background-category">
       {{- range $name, $items := .Site.Taxonomies.categories }}
       <li><a href="{{ `categories/` | relLangURL }}{{ $name | urlize | lower }}">{{ $name | title | humanize }}</a>
       </li>
