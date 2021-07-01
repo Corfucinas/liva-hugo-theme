@@ -1,4 +1,4 @@
-<head itemscope itemtype="{{ .Site.BaseURL }}">
+<head itemscope itemtype="https://schema.org/WebPage">
   <meta charset="utf-8">
 
   {{ "<!-- Security Policy -->" | safeHTML }}
@@ -11,7 +11,7 @@
 
   {{ "<!-- AMP starts -->" | safeHTML }}
   <script async src="https://cdn.ampproject.org/v0.js"></script>
-  {{ if eq .Section "articles" }}
+  {{ if .IsPage }}
   <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
   {{ end }}
   <script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>
@@ -58,6 +58,27 @@
     content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
   <meta name="twitter:description"
     content="{{ with .Description }}{{ . }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}">
+  <meta itemprop="keywords"
+    content="{{ range $plural, $terms := .Site.Taxonomies }}{{ range $term, $val := $terms }}{{ printf "%s," $term }}{{ end }}{{ end }}" />
+  {{if .IsPage}}
+  <meta itemprop="wordCount" content="{{ .WordCount }}">
+  {{ end }}
+
+
+  {{ "<!-- part of a series, link to related articles -->" | safeHTML }}
+  {{ if .IsPage  }}
+  {{ $permalink := .Permalink }}
+  {{ $siteSeries := .Site.Taxonomies.series }}
+  {{ with .Params.series }}{{ range $name := . }}
+  {{ $series := index $siteSeries $name }}
+  {{ range $page := first 6 $series.Pages }}
+  {{ if ne $page.Permalink $permalink }}
+  <meta property="og:see_also" content="{{ $page.Permalink }}" />
+  {{ end }}
+  {{ end }}
+  {{ end }}
+  {{ end }}
+  {{ end }}
 
   {{ "<!-- Link Tags -->" | safeHTML }}
   <link itemprop="url" href="{{ .Permalink }}">
@@ -135,7 +156,6 @@
   <meta name="apple-touch-fullscreen" content="yes">
 
   {{ "<!-- renders only in the article page -->" | safeHTML }}
-  {{ if eq .Section "articles" }}
 
   {{ "<!-- Pagination meta tags for list pages only  -->" | safeHTML }}
   {{ $paginator := .Paginate (where .Pages "Section" "articles") }}
@@ -164,7 +184,6 @@
   <meta name="news_keywords" content="{{ index . 0 }}">
   <meta property="article:section" content="{{ index . 0 }}">
   {{ end }}
-  {{ end }}
 
 
   {{ "<!-- seo-schema -->" | safeHTML }}
@@ -173,7 +192,7 @@
   {{ partial "seo/structured/breadcrumb" . }}
 
 
-  {{ if eq .Section "articles" }}
+  {{ if .IsPage }}
   {{ partial "seo/structured/article" . }}
   {{ end }}
 
