@@ -1,12 +1,3 @@
-<script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "WebSite",
-        "name": "{{ .Site.Title }}",
-        {{ with .Site.Params.alternatePageName }}"alternateName": "{{ . }}",{{ end }}
-        "url": "{{ .Site.BaseURL }}"
-    }
-    </script>
 {{ $baseUrl := .Site.BaseURL }}
 <script type="application/ld+json">
     [
